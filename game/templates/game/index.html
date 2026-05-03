@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DotaLe — Guess Dota 2 Hero</title>
+{% load static %}
+{% load game_extras %}
+<link rel="icon" href="{% static 'game/icons/favicon.ico' %}" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Rajdhani:wght@300;400;500;600&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'game/css/style.css' %}">
+</head>
+<body>
+
+<!--========================= Header =========================-->
+
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo-container">
+      <span class="logo-icon">⚔</span>
+      <h1 class="logo-text">DotaLe</h1>
+      <span class="logo-subtitle">Hero Guesser</span>
+    </div>
+    <div class="header-actions">
+      <a href="{% url 'game:reset_game' %}" class="button-reset-game" title="Reset Game">↺ Reset</a>
+    </div>
+  </div>
+</header>
+
+<!--========================= Hints Bar =========================-->
+
+<section class="hints-panel" id="hints-panel">
+  <div class="hints-container">
+    <div class="hint-slot {% if hints.quote %}hint-slot--active{% endif %}" id="hint-quote" data-hint-type="quote"
+         data-text="{{ hints.quote.text|default:'' }}"
+         data-mp3="{{ hints.quote.mp3|default:'' }}">
+      <span class="hint-icon">❝</span>
+      <span class="hint-label-text">Quote<br><em class="hint-status-message">after 4 attempts</em></span>
+    </div>
+    <div class="hint-slot {% if hints.ability %}hint-slot--active{% endif %}" id="hint-ability" data-hint-type="ability"
+         data-name="{{ hints.ability.name|default:'' }}"
+         data-icon="{{ hints.ability.icon|default:'' }}">
+      <span class="hint-icon">⚡</span>
+      <span class="hint-label-text">Ability<br><em class="hint-status-message">after 8 attempts</em></span>
+    </div>
+    <div class="hint-slot {% if hints.loading_screen %}hint-slot--active{% endif %}" id="hint-loading-screen" data-hint-type="loading-screen"
+         data-image="{{ hints.loading_screen.image|default:'' }}">
+      <span class="hint-icon">🖼</span>
+      <span class="hint-label-text">Load Screen<br><em class="hint-status-message">after 12 attempts</em></span>
+    </div>
+  </div>
+</section>
+
+<!--========================= Hint Modal =========================-->
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-window" id="modal-window">
+    <button class="modal-close-button" id="modal-close-button">✕</button>
+    <div class="modal-content-body" id="modal-content-body"></div>
+  </div>
+</div>
+
+<!--========================= Main =========================-->
+
+<main class="game-container">
+
+  <!--========================= Win Banner =========================-->
+
+  {% if won %}
+  <div class="victory-banner" id="victory-banner">
+    <div class="victory-banner-inner">
+      <div class="victory-title">🏆 Victory!</div>
+      <div class="victory-subtitle">
+        You guessed the hero in <strong>{{ attempt_count }}</strong> 
+        {% if attempt_count == 1 %}attempt{% else %}attempts{% endif %}!</div>
+      <div class="victory-hero-name">{{ revealed_name }}</div>
+      <a href="{% url 'game:reset_game' %}" class="button-start-new-game">New Game</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <!--========================= Search =========================-->
+
+  {% if not won %}
+  <div class="search-section" id="search-section">
+    <div class="search-input-container">
+      <input
+        type="text"
+        id="hero-search-input"
+        class="hero-search-input"
+        placeholder="Enter hero name..."
+        autocomplete="off"
+      >
+      <button id="hero-search-button" class="hero-search-button">▶</button>
+    </div>
+    <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
+  </div>
+  {% endif %}
+
+  <!--========================= Guesses Table =========================-->
+
+  <div class="history-table-container">
+    <div class="table-header-row">
+      <div class="table-column column-hero">Hero</div>
+      <div class="table-column column-gender">Gender</div>
+      <div class="table-column column-race">Species</div>
+      <div class="table-column column-role">Role</div>
+      <div class="table-column column-attribute">Attribute</div>
+      <div class="table-column column-attack">Attack Type</div>
+      <div class="table-column column-difficulty">Complexity</div>
+      <div class="table-column column-year">Release Year</div>
+    </div>
+
+    <!--========================= Guesses List =========================-->
+
+    <div class="guesses-history-list" id="guesses-history-list">
+      {% for guess in guesses %}
+      <div class="guess-row-container {% if guess.correct %}guess-row-container--correct{% endif %}">
+        <div class="table-column column-hero">
+          {% if guess.image %}
+            <img src="{{ guess.image }}" alt="{{ guess.name }}" class="hero-image-avatar">
+          {% else %}
+            <div class="hero-avatar-placeholder">{{ guess.name|first }}</div>
+          {% endif %}
+          <span class="hero-display-name">{{ guess.name }}</span>
+        </div>
+        {% for field_key, field_data in guess.fields.items %}
+        <div class="table-column table-field-cell cell-status-{{ field_data.status }}">
+          <span class="field-value-text">{{ field_data.value|format_value }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+<!--========================= Notifications =========================-->
+<div class="notification-toast" id="notification-toast"></div>
+
+<script>
+  const CONFIGURATION = {
+    csrfToken: '{{ csrf_token }}',
+    isGameWon: {{ won|yesno:"true,false" }},
+    attemptsInitialCount: {{ attempt_count }}
+  };
+</script>
+<script src="{% static 'game/js/game.js' %}"></script>
+</body>
+</html>

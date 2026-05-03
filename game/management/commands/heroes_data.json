@@ -1,0 +1,1964 @@
+{
+    "Abaddon": {
+        "name": "Abaddon",
+        "gender": "Male",
+        "species": [
+            "Human",
+            "Undead",
+            "Cursed"
+        ],
+        "position": [
+            "Carry",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2013"
+    },
+    "Alchemist": {
+        "name": "Alchemist",
+        "gender": "Male",
+        "species": [
+            "Ogre",
+            "Keen"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane",
+            "Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Ancient_Apparition": {
+        "name": "Ancient Apparition",
+        "gender": "Male",
+        "species": [
+            "Fundamental",
+            "Elemental",
+            "Ice"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Anti-Mage": {
+        "name": "Anti-Mage",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Arc_Warden": {
+        "name": "Arc Warden",
+        "gender": "Other",
+        "species": [
+            "Fundamental"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2015"
+    },
+    "Axe": {
+        "name": "Axe",
+        "gender": "Male",
+        "species": [
+            "Oglodi"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Bane": {
+        "name": "Bane",
+        "gender": "Other",
+        "species": [
+            "Demon",
+            "Nightmare"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Batrider": {
+        "name": "Batrider",
+        "gender": "Male",
+        "species": [
+            "Troll"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Beastmaster": {
+        "name": "Beastmaster",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Bloodseeker": {
+        "name": "Bloodseeker",
+        "gender": "Male",
+        "species": [
+            "Rakshasa"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Bounty_Hunter": {
+        "name": "Bounty Hunter",
+        "gender": "Male",
+        "species": [
+            "Gondar"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Brewmaster": {
+        "name": "Brewmaster",
+        "gender": "Male",
+        "species": [
+            "Pandaren",
+            "Celestial"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Bristleback": {
+        "name": "Bristleback",
+        "gender": "Male",
+        "species": [
+            "Oglodi"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2013"
+    },
+    "Broodmother": {
+        "name": "Broodmother",
+        "gender": "Female",
+        "species": [
+            "Arachnid",
+            "Zealot Scarab"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Centaur_Warrunner": {
+        "name": "Centaur Warrunner",
+        "gender": "Male",
+        "species": [
+            "Centaur"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Chaos_Knight": {
+        "name": "Chaos Knight",
+        "gender": "Male",
+        "species": [
+            "Fundamental"
+        ],
+        "position": [
+            "Carry",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Chen": {
+        "name": "Chen",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2011"
+    },
+    "Clinkz": {
+        "name": "Clinkz",
+        "gender": "Male",
+        "species": [
+            "Smeevil",
+            "Undead"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Clockwerk": {
+        "name": "Clockwerk",
+        "gender": "Male",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Crystal_Maiden": {
+        "name": "Crystal Maiden",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Dark_Seer": {
+        "name": "Dark Seer",
+        "gender": "Male",
+        "species": [
+            "Unknown"
+        ],
+        "position": [
+            "Offlane",
+            "Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Dark_Willow": {
+        "name": "Dark Willow",
+        "gender": "Female",
+        "species": [
+            "Fae"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2017"
+    },
+    "Dawnbreaker": {
+        "name": "Dawnbreaker",
+        "gender": "Female",
+        "species": [
+            "Celestial"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2021"
+    },
+    "Dazzle": {
+        "name": "Dazzle",
+        "gender": "Male",
+        "species": [
+            "Troll"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Death_Prophet": {
+        "name": "Death Prophet",
+        "gender": "Female",
+        "species": [
+            "Human",
+            "Spirit"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Disruptor": {
+        "name": "Disruptor",
+        "gender": "Male",
+        "species": [
+            "Oglodi"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Doom": {
+        "name": "Doom",
+        "gender": "Male",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Dragon_Knight": {
+        "name": "Dragon Knight",
+        "gender": "Male",
+        "species": [
+            "Human",
+            "Dragonkin"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Drow_Ranger": {
+        "name": "Drow Ranger",
+        "gender": "Female",
+        "species": [
+            "Drow"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Earth_Spirit": {
+        "name": "Earth Spirit",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Earth"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Hard",
+        "date": "2013"
+    },
+    "Earthshaker": {
+        "name": "Earthshaker",
+        "gender": "Male",
+        "species": [
+            "Elemental"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Elder_Titan": {
+        "name": "Elder Titan",
+        "gender": "Male",
+        "species": [
+            "Titan",
+            "Fundamental"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2013"
+    },
+    "Ember_Spirit": {
+        "name": "Ember Spirit",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Fire"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2013"
+    },
+    "Enchantress": {
+        "name": "Enchantress",
+        "gender": "Female",
+        "species": [
+            "Fae",
+            "Forest"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Enigma": {
+        "name": "Enigma",
+        "gender": "Other",
+        "species": [
+            "Fundamental"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Faceless_Void": {
+        "name": "Faceless Void",
+        "gender": "Male",
+        "species": [
+            "Faceless One"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Grimstroke": {
+        "name": "Grimstroke",
+        "gender": "Male",
+        "species": [
+            "Spirit",
+            "Ink"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2018"
+    },
+    "Gyrocopter": {
+        "name": "Gyrocopter",
+        "gender": "Male",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Carry",
+            "Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Hoodwink": {
+        "name": "Hoodwink",
+        "gender": "Female",
+        "species": [
+            "Beastfolk"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2020"
+    },
+    "Huskar": {
+        "name": "Huskar",
+        "gender": "Male",
+        "species": [
+            "Troll"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Invoker": {
+        "name": "Invoker",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Io": {
+        "name": "Io",
+        "gender": "Other",
+        "species": [
+            "Fundamental"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Jakiro": {
+        "name": "Jakiro",
+        "gender": "Male",
+        "species": [
+            "Dragon"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Juggernaut": {
+        "name": "Juggernaut",
+        "gender": "Male",
+        "species": [
+            "Masked One",
+            "Human"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Keeper_of_the_Light": {
+        "name": "Keeper of the Light",
+        "gender": "Male",
+        "species": [
+            "Fundamental"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Kez": {
+        "name": "Kez",
+        "gender": "Male",
+        "species": [
+            "Avian",
+            "Humanoid"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Hard",
+        "date": "2024"
+    },
+    "Kunkka": {
+        "name": "Kunkka",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Largo": {
+        "name": "Largo",
+        "gender": "Male",
+        "species": [
+            "Murkroot"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2025"
+    },
+    "Legion_Commander": {
+        "name": "Legion Commander",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2013"
+    },
+    "Leshrac": {
+        "name": "Leshrac",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Corrupted"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Lich": {
+        "name": "Lich",
+        "gender": "Male",
+        "species": [
+            "Undead"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Lifestealer": {
+        "name": "Lifestealer",
+        "gender": "Male",
+        "species": [
+            "Oglodi",
+            "Possessed"
+        ],
+        "position": [
+            "Carry",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Lina": {
+        "name": "Lina",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Lion": {
+        "name": "Lion",
+        "gender": "Male",
+        "species": [
+            "Demon",
+            "Human"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Lone_Druid": {
+        "name": "Lone Druid",
+        "gender": "Male",
+        "species": [
+            "Human",
+            "Shapeshifter"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Luna": {
+        "name": "Luna",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Lycan": {
+        "name": "Lycan",
+        "gender": "Male",
+        "species": [
+            "Human",
+            "Werewolf"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Magnus": {
+        "name": "Magnus",
+        "gender": "Male",
+        "species": [
+            "Magnoceros"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Marci": {
+        "name": "Marci",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2021"
+    },
+    "Mars": {
+        "name": "Mars",
+        "gender": "Male",
+        "species": [
+            "God"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2019"
+    },
+    "Medusa": {
+        "name": "Medusa",
+        "gender": "Female",
+        "species": [
+            "Gorgon",
+            "Naga"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2013"
+    },
+    "Meepo": {
+        "name": "Meepo",
+        "gender": "Male",
+        "species": [
+            "Geomancer"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Mirana": {
+        "name": "Mirana",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Monkey_King": {
+        "name": "Monkey King",
+        "gender": "Male",
+        "species": [
+            "Celestial",
+            "Simian"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2016"
+    },
+    "Morphling": {
+        "name": "Morphling",
+        "gender": "Other",
+        "species": [
+            "Elemental",
+            "Water"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2010"
+    },
+    "Muerta": {
+        "name": "Muerta",
+        "gender": "Female",
+        "species": [
+            "Undead",
+            "Spirit"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2023"
+    },
+    "Naga_Siren": {
+        "name": "Naga Siren",
+        "gender": "Female",
+        "species": [
+            "Slithereen"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Nature's_Prophet": {
+        "name": "Nature's Prophet",
+        "gender": "Male",
+        "species": [
+            "Nature",
+            "Spirit"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Necrophos": {
+        "name": "Necrophos",
+        "gender": "Male",
+        "species": [
+            "Undead"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Night_Stalker": {
+        "name": "Night Stalker",
+        "gender": "Male",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Nyx_Assassin": {
+        "name": "Nyx Assassin",
+        "gender": "Male",
+        "species": [
+            "Insectoid",
+            "Zealot"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Ogre_Magi": {
+        "name": "Ogre Magi",
+        "gender": "Male",
+        "species": [
+            "Ogre"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Omniknight": {
+        "name": "Omniknight",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Oracle": {
+        "name": "Oracle",
+        "gender": "Male",
+        "species": [
+            "Unknown"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2015"
+    },
+    "Outworld_Destroyer": {
+        "name": "Outworld Destroyer",
+        "gender": "Male",
+        "species": [
+            "Eldritch",
+            "Otherworld"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Pangolier": {
+        "name": "Pangolier",
+        "gender": "Male",
+        "species": [
+            "Beastfolk"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2017"
+    },
+    "Phantom_Assassin": {
+        "name": "Phantom Assassin",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Phantom_Lancer": {
+        "name": "Phantom Lancer",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Phoenix": {
+        "name": "Phoenix",
+        "gender": "Other",
+        "species": [
+            "Elemental",
+            "Fire"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2014"
+    },
+    "Primal_Beast": {
+        "name": "Primal Beast",
+        "gender": "Male",
+        "species": [
+            "Primal"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2022"
+    },
+    "Puck": {
+        "name": "Puck",
+        "gender": "Other",
+        "species": [
+            "Faerie Dragon"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Pudge": {
+        "name": "Pudge",
+        "gender": "Male",
+        "species": [
+            "Undead",
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Pugna": {
+        "name": "Pugna",
+        "gender": "Male",
+        "species": [
+            "Undead"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Queen_of_Pain": {
+        "name": "Queen of Pain",
+        "gender": "Female",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Razor": {
+        "name": "Razor",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Lightning"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Riki": {
+        "name": "Riki",
+        "gender": "Male",
+        "species": [
+            "Gondar"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Ringmaster": {
+        "name": "Ringmaster",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2024"
+    },
+    "Rubick": {
+        "name": "Rubick",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Sand_King": {
+        "name": "Sand King",
+        "gender": "Male",
+        "species": [
+            "Insectoid"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Shadow_Demon": {
+        "name": "Shadow Demon",
+        "gender": "Male",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Shadow_Fiend": {
+        "name": "Shadow Fiend",
+        "gender": "Male",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Shadow_Shaman": {
+        "name": "Shadow Shaman",
+        "gender": "Male",
+        "species": [
+            "Troll"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Silencer": {
+        "name": "Silencer",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Skywrath_Mage": {
+        "name": "Skywrath Mage",
+        "gender": "Male",
+        "species": [
+            "Skywrath"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2013"
+    },
+    "Slardar": {
+        "name": "Slardar",
+        "gender": "Male",
+        "species": [
+            "Slithereen"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Slark": {
+        "name": "Slark",
+        "gender": "Male",
+        "species": [
+            "Slithereen"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Snapfire": {
+        "name": "Snapfire",
+        "gender": "Female",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2019"
+    },
+    "Sniper": {
+        "name": "Sniper",
+        "gender": "Male",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Spectre": {
+        "name": "Spectre",
+        "gender": "Female",
+        "species": [
+            "Spectral",
+            "Entity"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Spirit_Breaker": {
+        "name": "Spirit Breaker",
+        "gender": "Male",
+        "species": [
+            "Celestial"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Storm_Spirit": {
+        "name": "Storm Spirit",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Storm"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Sven": {
+        "name": "Sven",
+        "gender": "Male",
+        "species": [
+            "Human",
+            "Demon"
+        ],
+        "position": [
+            "Carry",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Techies": {
+        "name": "Techies",
+        "gender": "Male",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2014"
+    },
+    "Templar_Assassin": {
+        "name": "Templar Assassin",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry",
+            "Midlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Terrorblade": {
+        "name": "Terrorblade",
+        "gender": "Male",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2014"
+    },
+    "Tidehunter": {
+        "name": "Tidehunter",
+        "gender": "Male",
+        "species": [
+            "Leviathan"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Timbersaw": {
+        "name": "Timbersaw",
+        "gender": "Male",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Tinker": {
+        "name": "Tinker",
+        "gender": "Male",
+        "species": [
+            "Keen"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Tiny": {
+        "name": "Tiny",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Stone"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Treant_Protector": {
+        "name": "Treant Protector",
+        "gender": "Male",
+        "species": [
+            "Plant",
+            "Treant"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2012"
+    },
+    "Troll_Warlord": {
+        "name": "Troll Warlord",
+        "gender": "Male",
+        "species": [
+            "Troll"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2013"
+    },
+    "Tusk": {
+        "name": "Tusk",
+        "gender": "Male",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2013"
+    },
+    "Underlord": {
+        "name": "Underlord",
+        "gender": "Male",
+        "species": [
+            "Demon"
+        ],
+        "position": [
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2016"
+    },
+    "Undying": {
+        "name": "Undying",
+        "gender": "Male",
+        "species": [
+            "Undead"
+        ],
+        "position": [
+            "Offlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2012"
+    },
+    "Ursa": {
+        "name": "Ursa",
+        "gender": "Male",
+        "species": [
+            "Ursa"
+        ],
+        "position": [
+            "Carry"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Vengeful_Spirit": {
+        "name": "Vengeful Spirit",
+        "gender": "Female",
+        "species": [
+            "Skywrath",
+            "Spirit"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Venomancer": {
+        "name": "Venomancer",
+        "gender": "Male",
+        "species": [
+            "Plague",
+            "Beast"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Viper": {
+        "name": "Viper",
+        "gender": "Male",
+        "species": [
+            "Netherdrake"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Visage": {
+        "name": "Visage",
+        "gender": "Male",
+        "species": [
+            "Undead",
+            "Gargoyle"
+        ],
+        "position": [
+            "Midlane",
+            "Offlane",
+            "Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Hard",
+        "date": "2012"
+    },
+    "Void_Spirit": {
+        "name": "Void Spirit",
+        "gender": "Male",
+        "species": [
+            "Elemental",
+            "Void"
+        ],
+        "position": [
+            "Midlane"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Melee",
+        "complexity": "Medium",
+        "date": "2019"
+    },
+    "Warlock": {
+        "name": "Warlock",
+        "gender": "Male",
+        "species": [
+            "Oglodi"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Weaver": {
+        "name": "Weaver",
+        "gender": "Male",
+        "species": [
+            "Fundamental"
+        ],
+        "position": [
+            "Carry",
+            "Support"
+        ],
+        "attribute": "Agility",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2011"
+    },
+    "Windranger": {
+        "name": "Windranger",
+        "gender": "Female",
+        "species": [
+            "Human"
+        ],
+        "position": [
+            "Carry",
+            "Midlane",
+            "Offlane",
+            "Support"
+        ],
+        "attribute": "Universal",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2010"
+    },
+    "Winter_Wyvern": {
+        "name": "Winter Wyvern",
+        "gender": "Female",
+        "species": [
+            "Dragon",
+            "Ice"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Medium",
+        "date": "2015"
+    },
+    "Witch_Doctor": {
+        "name": "Witch Doctor",
+        "gender": "Male",
+        "species": [
+            "Troll"
+        ],
+        "position": [
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    },
+    "Wraith_King": {
+        "name": "Wraith King",
+        "gender": "Male",
+        "species": [
+            "Undead"
+        ],
+        "position": [
+            "Carry",
+            "Offlane"
+        ],
+        "attribute": "Strength",
+        "attack_type": "Melee",
+        "complexity": "Easy",
+        "date": "2011"
+    },
+    "Zeus": {
+        "name": "Zeus",
+        "gender": "Male",
+        "species": [
+            "God"
+        ],
+        "position": [
+            "Midlane",
+            "Support",
+            "Hard Support"
+        ],
+        "attribute": "Intelligence",
+        "attack_type": "Ranged",
+        "complexity": "Easy",
+        "date": "2010"
+    }
+}

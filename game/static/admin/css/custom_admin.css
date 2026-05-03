@@ -1,0 +1,49 @@
+/* ========================= Layout =========================  */
+
+#content-related {
+    display: none !important;
+}
+
+#content-main {
+    width: 100% !important;
+}
+
+.historylink {
+    display: none !important;
+}
+
+/* ========================= Form Fields ========================= */
+
+.aligned input,
+.aligned select,
+.aligned textarea,
+.aligned .vTextField {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* ========================= List Table ========================= */
+
+.results table thead th .text a,
+.results table thead th .text span {
+    display: flex;
+    justify-content: center;
+}
+
+.results table tbody td,
+.results table tbody th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.results table tbody th a,
+.results table tbody td a {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.results table tbody th {
+    padding-left: 0 !important;
+}
