@@ -21,6 +21,7 @@ def index(request):
         'attempt_count': session.attempt_count,
         'hints': hints,
         'revealed_name': target_hero.name if (session.won and target_hero) else None,
+        'hint_params': session.get_hint_params(),
     })
 
 
@@ -79,6 +80,7 @@ def make_guess(request):
         'result':        comparison_result,
         'attempt_count': session.attempt_count,
         'hints':         hints,
+        'hint_params':   session.get_hint_params(),
         'won':           session.won,
         'revealed_name': target_hero.name if session.won else None,
     })

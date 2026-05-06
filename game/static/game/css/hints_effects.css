@@ -1,0 +1,294 @@
+/* ════════════════════════════════════════════════════════
+   DotaLe: Complexity Effects & Settings Modal
+   ════════════════════════════════════════════════════════ */
+
+/* ========================= SHARED ANIMATIONS & STATES ========================= */
+
+@keyframes quotePulse {
+  0%, 100% { box-shadow: 0 0 0px rgba(200, 155, 60, 0); }
+  50%      { box-shadow: 0 0 18px rgba(200, 155, 60, 0.5); }
+}
+
+/* Common Blur State for interactive hints */
+.modal-quote-text--blurred,
+.modal-ability-name--blurred {
+  filter: blur(7px);
+  cursor: pointer;
+  user-select: none;
+  transition: filter 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 8px;
+  padding: 4px 12px;
+  animation: quotePulse 2s ease-in-out 0.1s infinite;
+  display: inline-block;
+}
+
+.modal-quote-text--blurred:hover,
+.modal-ability-name--blurred:hover {
+  filter: blur(5px);
+}
+
+.modal-quote-text--revealed,
+.modal-ability-name--revealed {
+  filter: none;
+  cursor: default;
+  animation: none;
+  box-shadow: none;
+}
+
+/* ========================= ABILITY ICON ========================= */
+
+.modal-ability-icon--fx {
+  transition: filter 0.4s ease, transform 0.5s ease;
+}
+
+.modal-ability-icon--grayscale {
+  filter: grayscale(1);
+}
+
+/* ========================= LOADING SCREEN PUZZLE ========================= */
+
+.modal-loading-screen-image--hidden {
+  display: none !important;
+}
+
+.hint-puzzle-canvas {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+/* ========================= HEADER ========================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-reset-game {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.fx-gear-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--color-border-standard);
+  border-radius: var(--border-radius-standard);
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-text-dimmed);
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+  line-height: normal;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+}
+
+.fx-gear-button:hover {
+  color: var(--color-accent-gold);
+  border-color: var(--color-accent-gold);
+}
+
+/* ========================= SETTINGS ========================= */
+
+.fx-modal-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.fx-modal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-border-standard);
+  margin-bottom: 4px;
+}
+
+.fx-settings-group {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border-standard);
+}
+
+.fx-settings-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fx-settings-group-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.fx-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.fx-settings-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fx-settings-row-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+.fx-settings-row-desc {
+  font-size: 16px;
+  color: var(--color-text-dimmed);
+  letter-spacing: 0.3px;
+}
+
+.fx-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.fx-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.fx-toggle-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 11px;
+  background: #1a2030;
+  border: 1px solid var(--color-border-standard);
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+
+.fx-toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-text-dimmed);
+  transition: transform .2s ease, background .2s;
+}
+
+.fx-toggle input:checked + .fx-toggle-track {
+  background: rgba(200,155,60,.18);
+  border-color: var(--color-accent-gold);
+}
+
+.fx-toggle input:checked + .fx-toggle-track::after {
+  transform: translateX(18px);
+  background: var(--color-accent-gold);
+}
+
+.fx-puzzle-slider-row {
+  padding: 4px 0 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fx-puzzle-slider-labelrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fx-puzzle-badge {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-accent-gold);
+  background: rgba(200,155,60,.12);
+  border: 1px solid rgba(200,155,60,.3);
+  border-radius: 4px;
+  padding: 1px 8px;
+  min-width: 36px;
+  text-align: center;
+}
+
+.fx-puzzle-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-border-standard);
+  outline: none;
+  cursor: pointer;
+}
+
+.fx-puzzle-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+  border: 2px solid var(--color-background-secondary);
+  box-shadow: 0 0 6px rgba(200,155,60,.4);
+  cursor: pointer;
+  transition: background .2s, box-shadow .2s;
+}
+
+.fx-puzzle-slider::-webkit-slider-thumb:hover {
+  background: var(--color-accent-gold-light);
+  box-shadow: 0 0 10px rgba(200,155,60,.6);
+}
+
+/* ========================= MODAL WINDOWS: SIZING ========================= */
+
+/* Unified width for Quote and Ability hints */
+.modal-window--hint {
+  width: 720px;
+  max-width: 720px;
+  min-width: 720px;
+}
+
+.modal-quote-container,
+.modal-ability-container {
+  width: 100%;
+}
+
+.modal-window:has(.modal-loading-screen-image),
+.modal-window:has(.hint-puzzle-canvas),
+.modal-window--wide {
+  max-width: min(1088px, 96vw);
+  width: 96vw;
+  padding: 24px;
+}

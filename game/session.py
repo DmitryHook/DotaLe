@@ -1,3 +1,5 @@
+import random
+
 from game.models import Hero
 from game.services import build_hints
 
@@ -35,6 +37,7 @@ class GameSession:
         target_hero = self._pick_random_hero()
         if target_hero:
             self._data['target_id'] = target_hero.id
+            self._generate_hint_params()
             self.save()
         return target_hero
 
@@ -67,6 +70,45 @@ class GameSession:
 
     # ========================= Hints =========================
 
+    PUZZLE_GRIDS = [
+        (  2,   1),
+        (  2,   2),
+        (  4,   2),
+        (  4,   4),
+        (  8,   4),
+        (  8,   8),
+        ( 16,   8),
+        ( 16,  16),
+    ]
+
+    def _generate_hint_params(self) -> None:
+        """Generates parameters for all grid sizes on startup. Each size gets a fixed shuffle
+        that remains unchanged when switching between them."""
+        existing = self._data.get('hint_params', {})
+        rotation = existing.get('ability_rotation') or random.choice([90, 180, 270])
+
+        grids = {}
+        for cols, rows in self.PUZZLE_GRIDS:
+            key = f'{cols}x{rows}'
+            if key in existing.get('grids', {}):
+                grids[key] = existing['grids'][key]
+            else:
+                tile_order = list(range(cols * rows))
+                random.shuffle(tile_order)
+                grids[key] = tile_order
+
+        self._data['hint_params'] = {
+            'ability_rotation': rotation,
+            'grids':            grids,
+        }
+
+    def get_hint_params(self) -> dict:
+        """Returns all effect params. Generates fallback if session is null."""
+        if 'hint_params' not in self._data:
+            self._generate_hint_params()
+            self.save()
+        return self._data['hint_params']
+
     def get_hints(self, target_hero: Hero) -> dict:
         hints, updates = build_hints(self.attempt_count, target_hero, self._data)
         if updates:
@@ -78,3 +120,4 @@ class GameSession:
 
     def already_guessed_names(self) -> list[str]:
         return [guess['name'] for guess in self.guesses]
+    

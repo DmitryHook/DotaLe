@@ -12,6 +12,5 @@ api_patterns = [
 urlpatterns = [
     path('', views.index, name='index'),
     path('reset/', views.reset_game, name='reset_game'),
-    path('api/search/', views.search_heroes, name='search_heroes'),
     path('api/', include(api_patterns)),
 ]

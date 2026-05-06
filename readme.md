@@ -1,4 +1,8 @@
-[🇷🇺 Читать на русском](readme.ru.md)
+[🇷🇺 Читать на русском](README.RU.md)
+
+<p>
+  <img src="static/app-demo.gif" alt="DotaLe Demo" width="600">
+</p>
 
 # DotaLe — Hero Guesser
 
@@ -82,10 +86,10 @@ Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
 ## Roadmap
 
-- [ ] Statistics: track wins and attempts per game
-- [ ] Share result: emoji grid like Wordle
-- [ ] Multilanguage support: EN / RU
-- [ ] Harder hints: hidden voice line text, grayscale filter for images, cropped and shuffled image pieces
-- [ ] Hero databook: full hero list with filtering by characteristics
-- [ ] Light theme
-- [ ] Scoring system, game over
+- [x] Introduce harder hints: hidden voice line text, grayscale image filters, and cropped/shuffled image puzzles.
+- [ ] Track detailed statistics, including wins and attempts per game.
+- [ ] "Share Result" functionality featuring an emoji grid (Wordle-style).
+- [ ] A comprehensive encyclopedia of all heroes with advanced filtering by characteristics.
+- [ ] Implement a points-based scoring system and a definitive "Game Over" state.
+- [ ] Full multi-language support for English and Russian audiences.
+- [ ] Addition of a Light Theme for improved accessibility and preference.

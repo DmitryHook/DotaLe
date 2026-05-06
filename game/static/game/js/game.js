@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   DotaLe — game.js  |  Game logic: search, attemtps, hints
+   DotaLe — game.js  |  Game logic: search, attempts, hints
 ════════════════════════════════════════════════════════ */
 
 (function () {
@@ -8,6 +8,7 @@
   if (CONFIGURATION.isGameWon) return; // If the game has already been won, the script does not initialize.
 
   // ========================= DOM Elements =========================
+
   const heroSearchInput        = document.getElementById('hero-search-input');
   const heroSearchButton       = document.getElementById('hero-search-button');
   const autocompleteDropdown   = document.getElementById('autocomplete-dropdown');
@@ -17,12 +18,13 @@
   const modalContentBody       = document.getElementById('modal-content-body');
 
   // ========================= State =========================
+
   let currentAutocompleteResults = [];   // Hero selection list
   let selectedAutocompleteIndex  = -1;     // Current selection index
-  let lastSearchQuery            = '';
   let autocompleteDebounceTimer  = null;
 
   // ========================= Notifications =========================
+
   function displayNotificationToast(message, type = 'info') {
     notificationToast.textContent = message;
     notificationToast.className = `notification-toast notification-toast--visible notification-toast--${type}`;
@@ -34,6 +36,7 @@
   }
 
   // ========================= Autocomplete =========================
+
   function renderAutocompleteDropdown(results) {
     currentAutocompleteResults = results;
     selectedAutocompleteIndex = -1;
@@ -114,7 +117,9 @@
           'Content-Type': 'application/json',
           'X-CSRFToken': CONFIGURATION.csrfToken,
         },
-        body: JSON.stringify({ hero_name: heroName }),
+        body: JSON.stringify({
+          hero_name:   heroName
+        }),
       });
 
       const data = await response.json();
@@ -124,19 +129,19 @@
         return;
       }
 
-      // Add new guess to history
       appendNewGuessToHistoryTable(data.result);
 
-      // Update hints
       if (data.hints) {
         updateHintsVisualState(data.hints);
       }
+
+      if (data.hint_params) {
+        CONFIGURATION.hintParams = data.hint_params;
+      }
       updateHintStatusLabels(data.attempt_count);
 
-      // Clear input
       heroSearchInput.value = '';
 
-      // Victory handler
       if (data.won) {
         showVictoryBanner(data.revealed_name, data.attempt_count);
       }
@@ -200,10 +205,12 @@
   function closeHintModal() {
     if (!modalOverlay) return;
     modalOverlay.classList.remove('modal-overlay--visible');
-    // Clearing the modal content
+    // Clearing the modal content after transition
     setTimeout(() => {
-      modalContentBody.innerHTML = '';
-    }, 250);
+      if (!modalOverlay.classList.contains('modal-overlay--visible')) {
+        modalContentBody.innerHTML = '';
+      }
+    }, 300);
   }
 
   function buildHintModalContent(hintSlotElement) {
@@ -290,7 +297,9 @@
     
     victoryBannerElement.innerHTML = `
       <div class="victory-banner-inner">
-        <div class="victory-title">🏆 Victory!</div>
+        <div class="victory-title">
+          Victory!
+        </div>
         <div class="victory-subtitle">You guessed the hero in <strong>${attemptsCount}</strong> ${attemptsWord}!</div>
         <div class="victory-hero-name">${heroName}</div>
         <a href="/reset/" class="button-start-new-game">New Game</a>
@@ -301,12 +310,19 @@
   }
 
   // ========================= Event Listeners =========================
+  
   function initializeEventListeners() {
     // Search input
     heroSearchInput.addEventListener('input', () => {
       const query = heroSearchInput.value.trim();
       clearTimeout(autocompleteDebounceTimer);
       autocompleteDebounceTimer = setTimeout(() => fetchHeroAutocomplete(query), 250);
+    });
+
+    // Reopen dropdown on focus if input already has a value
+    heroSearchInput.addEventListener('focus', () => {
+      const query = heroSearchInput.value.trim();
+      if (query) fetchHeroAutocomplete(query);
     });
 
     // Navigation with keyboard in autocomplete
@@ -374,6 +390,7 @@
   }
 
   // ========================= Initialization =========================
+
   function initializeGame() {
     initializeEventListeners();
     updateHintStatusLabels(CONFIGURATION.attemptsInitialCount);
