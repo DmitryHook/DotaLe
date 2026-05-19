@@ -1,33 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DotaLe — Guess Dota 2 Hero</title>
+{% extends 'base.html' %}
 {% load static %}
 {% load game_extras %}
-<link rel="icon" href="{% static 'game/icons/favicon.ico' %}" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Rajdhani:wght@300;400;500;600&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'game/css/style.css' %}">
+
+{% block title %}DotaLe{% endblock %}
+
+{% block extra_fonts %};700&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600{% endblock %}
+
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'game/css/hints_effects.css' %}">
-</head>
-<body>
+{% endblock %}
 
-<!--========================= Header =========================-->
+{% block logo_subtitle %}
+<span class="logo-subtitle">Hero Guesser</span>
+{% endblock %}
 
-<header class="site-header">
-  <div class="header-container">
-    <div class="logo-container">
-      <span class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/></svg></span>
-      <h1 class="logo-text">DotaLe</h1>
-      <span class="logo-subtitle">Hero Guesser</span>
-    </div>
-    <div class="header-actions">
-      <a href="{% url 'game:reset_game' %}" class="button-reset-game" title="Reset Game">Reset</a>
-    </div>
+{% block header_actions %}
+<div class="fx-options-wrapper" id="fx-options-wrapper">
+  <button class="fx-gear-button fx-options-toggle" id="fx-options-toggle"
+          aria-haspopup="true" aria-expanded="false">
+    Options <span class="fx-options-chevron">▾</span>
+  </button>
+  <div class="fx-options-menu" id="fx-options-menu" role="menu">
+    <button class="fx-options-item" role="menuitem" data-action="settings">
+      <span class="fx-options-item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg></span>Settings
+    </button>
+    <button class="fx-options-item" role="menuitem" data-action="reset">
+      <span class="fx-options-item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;" class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>Reset
+    </button>
+    <button class="fx-options-item" role="menuitem" data-action="statistics">
+      <span class="fx-options-item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;" class="lucide lucide-chart-column-icon lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>Statistics
+    </button>
+    <button class="fx-options-item" role="menuitem" data-action="about">
+      <span class="fx-options-item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;" class="lucide lucide-info-icon lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>About
+    </button>
   </div>
-</header>
+</div>
+{% endblock %}
+
+{% block content %}
 
 <!--========================= Hints Bar =========================-->
 
@@ -62,6 +72,124 @@
   </div>
 </div>
 
+<!--========================= Settings Modal Template =========================-->
+
+<template id="tpl-settings-modal">
+  <div class="fx-modal-settings">
+    <div class="fx-modal-title">Hint Complexity</div>
+
+    <div class="fx-settings-group">
+      <div class="fx-settings-group-title">Quote</div>
+      <div class="fx-settings-row">
+        <div class="fx-settings-row-info">
+          <div class="fx-settings-row-label">Blur text</div>
+          <div class="fx-settings-row-desc">Click the quote to reveal it</div>
+        </div>
+        <label class="fx-toggle">
+          <input type="checkbox" data-setting="quote_blur">
+          <span class="fx-toggle-track"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="fx-settings-group">
+      <div class="fx-settings-group-title">Ability</div>
+      <div class="fx-settings-row">
+        <div class="fx-settings-row-info">
+          <div class="fx-settings-row-label">Blur name</div>
+          <div class="fx-settings-row-desc">Click the name to reveal it</div>
+        </div>
+        <label class="fx-toggle">
+          <input type="checkbox" data-setting="ability_blur">
+          <span class="fx-toggle-track"></span>
+        </label>
+      </div>
+      <div class="fx-settings-row">
+        <div class="fx-settings-row-info">
+          <div class="fx-settings-row-label">Grayscale</div>
+          <div class="fx-settings-row-desc">Icon shown in black &amp; white</div>
+        </div>
+        <label class="fx-toggle">
+          <input type="checkbox" data-setting="ability_grayscale">
+          <span class="fx-toggle-track"></span>
+        </label>
+      </div>
+      <div class="fx-settings-row">
+        <div class="fx-settings-row-info">
+          <div class="fx-settings-row-label">Rotation</div>
+          <div class="fx-settings-row-desc">Randomly rotated 90°/180°/270°</div>
+        </div>
+        <label class="fx-toggle">
+          <input type="checkbox" data-setting="ability_rotate">
+          <span class="fx-toggle-track"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="fx-settings-group">
+      <div class="fx-settings-group-title">Loading Screen</div>
+      <div class="fx-settings-row">
+        <div class="fx-settings-row-info">
+          <div class="fx-settings-row-label">Grayscale</div>
+          <div class="fx-settings-row-desc">Loading screen shown in black &amp; white</div>
+        </div>
+        <label class="fx-toggle">
+          <input type="checkbox" data-setting="loading_grayscale">
+          <span class="fx-toggle-track"></span>
+        </label>
+      </div>
+      <div class="fx-settings-row">
+        <div class="fx-settings-row-info">
+          <div class="fx-settings-row-label">Puzzle</div>
+          <div class="fx-settings-row-desc">Scrambled into pieces</div>
+        </div>
+        <label class="fx-toggle">
+          <input type="checkbox" data-setting="loading_puzzle">
+          <span class="fx-toggle-track"></span>
+        </label>
+      </div>
+      <div class="fx-puzzle-slider-row" id="fx-puzzle-slider-row">
+        <div class="fx-puzzle-slider-labelrow">
+          <span class="fx-settings-row-label">Pieces</span>
+          <span class="fx-puzzle-badge" id="fx-puzzle-badge">16</span>
+        </div>
+        <input type="range" class="fx-puzzle-slider" id="fx-puzzle-slider"
+               min="0" max="7" step="1" value="3">
+      </div>
+    </div>
+  </div>
+</template>
+
+<!--========================= Reset Confirm Modal Template =========================-->
+
+<template id="tpl-reset-modal">
+  <div class="fx-modal-settings" style="text-align:center">
+    <div class="fx-modal-title">Reset Game</div>
+    <p class="fx-reset-description">All progress will be lost and a new hero will be chosen. Are you sure?</p>
+    <div class="fx-reset-buttons">
+      <button class="fx-reset-cancel" id="fx-reset-cancel">Cancel</button>
+      <a class="fx-reset-confirm" id="fx-reset-confirm" href="#">Yes, Reset</a>
+    </div>
+  </div>
+</template>
+
+<!--========================= Victory Banner Template =========================-->
+
+<template id="tpl-victory-banner">
+  <div class="victory-banner">
+    <div class="victory-banner-inner">
+      <div class="victory-title">Victory!</div>
+      <div class="victory-subtitle">You guessed the hero in <strong data-attempts></strong> <span data-attempts-word></span>!</div>
+      <div class="victory-hero-name" data-hero-name></div>
+      <a data-reset-href class="button-start-new-game">New Game</a>
+    </div>
+  </div>
+</template>
+
+<!--========================= Notifications =========================-->
+
+<div class="notification-toast" id="notification-toast"></div>
+
 <!--========================= Main =========================-->
 
 <main class="game-container">
@@ -75,7 +203,7 @@
         Victory!
       </div>
       <div class="victory-subtitle">
-        You guessed the hero in <strong>{{ attempt_count }}</strong> 
+        You guessed the hero in <strong>{{ attempt_count }}</strong>
         {% if attempt_count == 1 %}attempt{% else %}attempts{% endif %}!</div>
       <div class="victory-hero-name">{{ revealed_name }}</div>
       <a href="{% url 'game:reset_game' %}" class="button-start-new-game">New Game</a>
@@ -139,19 +267,19 @@
   </div>
 </main>
 
-<!--========================= Notifications =========================-->
+{% endblock %}
 
-<div class="notification-toast" id="notification-toast"></div>
-
+{% block extra_js %}
 <script>
   const CONFIGURATION = {
     csrfToken: '{{ csrf_token }}',
     isGameWon: {{ won|yesno:"true,false" }},
     attemptsInitialCount: {{ attempt_count }},
     hintParams: {{ hint_params|safe }},
+    aboutUrl: '{% url "game:about" %}',
+    resetUrl: '{% url "game:reset_game" %}',
   };
 </script>
 <script src="{% static 'game/js/game.js' %}"></script>
 <script src="{% static 'game/js/hints_effects.js' %}"></script>
-</body>
-</html>
+{% endblock %}

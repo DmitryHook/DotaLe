@@ -1,6 +1,6 @@
-/* ════════════════════════════════════════════════════════
-   DotaLe — game.js  |  Game logic: search, attempts, hints
-════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   DotaLe — game.js | Game logic: search, attempts, hints
+══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
@@ -9,19 +9,19 @@
 
   // ========================= DOM Elements =========================
 
-  const heroSearchInput        = document.getElementById('hero-search-input');
-  const heroSearchButton       = document.getElementById('hero-search-button');
-  const autocompleteDropdown   = document.getElementById('autocomplete-dropdown');
-  const guessesHistoryList     = document.getElementById('guesses-history-list');
-  const notificationToast      = document.getElementById('notification-toast');
-  const modalOverlay           = document.getElementById('modal-overlay');
-  const modalContentBody       = document.getElementById('modal-content-body');
+  const heroSearchInput = document.getElementById('hero-search-input');
+  const heroSearchButton = document.getElementById('hero-search-button');
+  const autocompleteDropdown = document.getElementById('autocomplete-dropdown');
+  const guessesHistoryList = document.getElementById('guesses-history-list');
+  const notificationToast = document.getElementById('notification-toast');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalContentBody = document.getElementById('modal-content-body');
 
   // ========================= State =========================
 
-  let currentAutocompleteResults = [];   // Hero selection list
-  let selectedAutocompleteIndex  = -1;     // Current selection index
-  let autocompleteDebounceTimer  = null;
+  let currentAutocompleteResults = []; // Hero selection list
+  let selectedAutocompleteIndex = -1; // Current selection index
+  let autocompleteDebounceTimer = null;
 
   // ========================= Notifications =========================
 
@@ -98,6 +98,7 @@
   }
 
   // ========================= Guess Handler =========================
+
   async function handleGuessSubmission() {
     const heroName = heroSearchInput.value.trim();
 
@@ -118,7 +119,7 @@
           'X-CSRFToken': CONFIGURATION.csrfToken,
         },
         body: JSON.stringify({
-          hero_name:   heroName
+          hero_name: heroName
         }),
       });
 
@@ -158,7 +159,6 @@
     const rowElement = document.createElement('div');
     rowElement.className = 'guess-row-container' + (guessResult.correct ? ' guess-row-container--correct' : '');
 
-    // Hero cell
     const heroCell = document.createElement('div');
     heroCell.className = 'table-column column-hero';
     if (guessResult.image) {
@@ -182,7 +182,6 @@
       const cellElement = document.createElement('div');
       cellElement.className = `table-column table-field-cell cell-status-${fieldData.status}`;
       
-      // Formatting the value
       const displayValue = Array.isArray(fieldData.value) ? fieldData.value.join(', ') : fieldData.value;
       
       let cellInnerHtml = `<span class="field-value-text">${displayValue}</span>`;
@@ -191,26 +190,15 @@
       rowElement.appendChild(cellElement);
     });
 
-    // Adding a new attempt to the beginning of the list
     guessesHistoryList.prepend(rowElement);
   }
 
-  // ========================= Modal Handler =========================
+  // ========================= Modal / Templates =========================
+
   function openHintModal(contentHtml) {
     if (!modalOverlay || !modalContentBody) return;
     modalContentBody.innerHTML = contentHtml;
     modalOverlay.classList.add('modal-overlay--visible');
-  }
-
-  function closeHintModal() {
-    if (!modalOverlay) return;
-    modalOverlay.classList.remove('modal-overlay--visible');
-    // Clearing the modal content after transition
-    setTimeout(() => {
-      if (!modalOverlay.classList.contains('modal-overlay--visible')) {
-        modalContentBody.innerHTML = '';
-      }
-    }, 300);
   }
 
   function buildHintModalContent(hintSlotElement) {
@@ -245,6 +233,7 @@
   }
 
   // ========================= Update UI =========================
+
   function updateHintStatusLabels(currentAttempts) {
     const updateLabel = (id, threshold) => {
       const remaining = Math.max(0, threshold - currentAttempts);
@@ -269,7 +258,7 @@
       const slot = document.getElementById('hint-quote');
       slot.classList.add('hint-slot--active');
       slot.dataset.text = hintsData.quote.text || '';
-      slot.dataset.mp3  = hintsData.quote.mp3  || '';
+      slot.dataset.mp3 = hintsData.quote.mp3 || '';
     }
     if (hintsData.ability) {
       const slot = document.getElementById('hint-ability');
@@ -284,35 +273,30 @@
     }
   }
 
+  // ========================= Victory =========================
+
   function showVictoryBanner(heroName, attemptsCount) {
     const mainContainer = document.querySelector('.game-container');
     const searchSection = document.getElementById('search-section');
+    const template = document.getElementById('tpl-victory-banner');
 
     if (searchSection) searchSection.remove();
 
-    const victoryBannerElement = document.createElement('div');
-    victoryBannerElement.className = 'victory-banner';
-    
-    const attemptsWord = attemptsCount === 1 ? 'attempt' : 'attempts';
-    
-    victoryBannerElement.innerHTML = `
-      <div class="victory-banner-inner">
-        <div class="victory-title">
-          Victory!
-        </div>
-        <div class="victory-subtitle">You guessed the hero in <strong>${attemptsCount}</strong> ${attemptsWord}!</div>
-        <div class="victory-hero-name">${heroName}</div>
-        <a href="/reset/" class="button-start-new-game">New Game</a>
-      </div>
-    `;
-    mainContainer.insertBefore(victoryBannerElement, mainContainer.firstChild);
-    displayNotificationToast('🏆 Success!', 'success');
+    if (template) {
+      const clone = template.content.cloneNode(true);
+      clone.querySelector('[data-attempts]').textContent = attemptsCount;
+      clone.querySelector('[data-attempts-word]').textContent = attemptsCount === 1 ? 'attempt' : 'attempts';
+      clone.querySelector('[data-hero-name]').textContent = heroName;
+      clone.querySelector('[data-reset-href]').href = CONFIGURATION.resetUrl || '/reset/';
+      mainContainer.insertBefore(clone, mainContainer.firstChild);
+    }
+
+    displayNotificationToast('Success!', 'success');
   }
 
   // ========================= Event Listeners =========================
   
   function initializeEventListeners() {
-    // Search input
     heroSearchInput.addEventListener('input', () => {
       const query = heroSearchInput.value.trim();
       clearTimeout(autocompleteDebounceTimer);
@@ -323,6 +307,12 @@
     heroSearchInput.addEventListener('focus', () => {
       const query = heroSearchInput.value.trim();
       if (query) fetchHeroAutocomplete(query);
+    });
+
+    // Close dropdown when input loses focus (e.g. switching monitors/windows).
+    // Delay lets a mousedown on an autocomplete item fire first.
+    heroSearchInput.addEventListener('blur', () => {
+      setTimeout(closeAutocompleteDropdown, 150);
     });
 
     // Navigation with keyboard in autocomplete
@@ -352,7 +342,6 @@
       }
     });
 
-    // Click on autocomplete item
     autocompleteDropdown.addEventListener('mousedown', (event) => {
       const item = event.target.closest('.autocomplete-item');
       if (!item) return;
@@ -361,7 +350,6 @@
       selectHeroFromAutocomplete(index);
     });
 
-    // Click on search button
     heroSearchButton.addEventListener('click', handleGuessSubmission);
 
     // Close autocomplete on click outside
@@ -380,13 +368,6 @@
       });
     });
 
-    // Close hint modal
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeHintModal();
-    });
-    modalOverlay.addEventListener('click', (event) => {
-      if (event.target === modalOverlay) closeHintModal();
-    });
   }
 
   // ========================= Initialization =========================

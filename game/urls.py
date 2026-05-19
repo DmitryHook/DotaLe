@@ -2,6 +2,7 @@ from django.urls import include, path
 
 from game import views
 
+
 app_name = 'game'
 
 api_patterns = [
@@ -11,6 +12,10 @@ api_patterns = [
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
     path('reset/', views.reset_game, name='reset_game'),
+
     path('api/', include(api_patterns)),
+
+    path('stats/', include('stats.urls', namespace='stats')),
 ]

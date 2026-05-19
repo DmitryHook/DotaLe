@@ -220,3 +220,4 @@ __marimo__/
 .pylintrc
 .desktop.ini
 .secret_key
+game_stats/

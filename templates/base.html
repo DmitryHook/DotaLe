@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}DotaLe{% endblock %}</title>
+  {% load static %}
+  <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Rajdhani:wght@300;400;500;600{% block extra_fonts %}{% endblock %}&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'game/css/style.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body{% block body_attrs %}{% endblock %}>
+
+  <!--========================= Header =========================-->
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <span class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
+            <line x1="13" x2="19" y1="19" y2="13"/>
+            <line x1="16" x2="20" y1="16" y2="20"/>
+            <line x1="19" x2="21" y1="21" y2="19"/>
+            <polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/>
+            <line x1="5" x2="9" y1="14" y2="18"/>
+            <line x1="7" x2="4" y1="17" y2="20"/>
+            <line x1="3" x2="5" y1="19" y2="21"/>
+          </svg>
+        </span>
+        <h1 class="logo-text">DotaLe</h1>
+        {% block logo_subtitle %}{% endblock %}
+      </div>
+      <div class="header-actions">
+        {% block header_actions %}{% endblock %}
+      </div>
+    </div>
+  </header>
+
+  <!--========================= Content =========================-->
+
+  {% block content %}{% endblock %}
+
+  <!--========================= Scripts =========================-->
+
+  {% block extra_js %}{% endblock %}
+
+</body>
+</html>

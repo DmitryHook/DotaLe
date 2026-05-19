@@ -1,27 +1,22 @@
-/* ═══════════════════════════════════════════════════════
-   DotaLe — CSS  |  Dark Dota 2 Theme
-   Fonts: Cinzel, Rajdhani, Roboto, Roboto Mono
-═══════════════════════════════════════════════════════ */
-
 :root {
-  --color-background-primary:     #0a0c10;
-  --color-background-secondary:   #111520;
-  --color-background-tertiary:    #181e2a;
-  --color-border-standard:        #2a3347;
-  --color-accent-gold:            #c89b3c;
-  --color-accent-gold-light:      #f0c060;
+  --color-background-primary: #0a0c10;
+  --color-background-secondary: #111520;
+  --color-background-tertiary: #181e2a;
+  --color-border-standard: #2a3347;
+  --color-accent-gold: #c89b3c;
+  --color-accent-gold-light: #f0c060;
   --color-status-error-background:#8b1a1a;
-  --color-status-error-border:    #c0392b;
+  --color-status-error-border: #c0392b;
   --color-status-success-background: #1a5c2a;
-  --color-status-success-border:  #27ae60;
+  --color-status-success-border: #27ae60;
   --color-status-partial-background: #ffdd00af;
-  --color-status-partial-border:  #e6cc23;
-  --color-text-main:              #cdd6e0;
-  --color-text-dimmed:            #6b7a8d;
-  --color-ui-accent:              #3d6b9e;
+  --color-status-partial-border: #e6cc23;
+  --color-text-main: #cdd6e0;
+  --color-text-dimmed: #6b7a8d;
+  --color-ui-accent: #3d6b9e;
 
-  --border-radius-standard:       6px;
-  --box-shadow-standard:          0 4px 24px rgba(0,0,0,.6);
+  --border-radius-standard: 6px;
+  --box-shadow-standard: 0 4px 24px rgba(0,0,0,.6);
 }
 
 *, *::before, *::after {
@@ -49,6 +44,7 @@ body {
       rgba(255,255,255,.015) 39px,
       rgba(255,255,255,.015) 40px
     );
+  overflow: hidden;
 }
 
 /* ========================= Site Header ========================= */
@@ -166,6 +162,19 @@ body {
   padding: 32px 24px 80px;
 }
 
+/* ========================= Scroll Bar ========================= */
+
+html, body {
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: #5a6b8c #1a1f2b;
+}
+
+.guesses-history-list {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
 /* ========================= Victory Banner ========================= */
 
 .victory-banner-inner {
@@ -183,7 +192,7 @@ body {
 }
 @keyframes victoryAnimationFadeIn {
   from { transform: scale(.8); opacity: 0; }
-  to   { transform: scale(1);  opacity: 1; }
+  to   { transform: scale(1); opacity: 1; }
 }
 .victory-title {
   font-family: 'Roboto Mono', serif;
@@ -327,23 +336,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-.column-hero {
-  background: var(--color-background-tertiary);
-  border: 1px solid var(--color-border-standard);
-  border-radius: var(--border-radius-standard);
-  padding: 0;
-  min-height: 96px;
-  position: relative;
-  display: flex;           
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.table-header-row .table-column {
-  font-family: 'Roboto', serif;
-}
 
 .table-header-row .table-column {
+  font-family: 'Roboto', serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -361,7 +356,7 @@ body {
 }
 @keyframes rowAnimationSlideIn {
   from { transform: translateY(-12px); opacity: 0; }
-  to   { transform: translateY(0);     opacity: 1; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 .table-field-cell {
@@ -399,6 +394,10 @@ body {
   padding: 0;
   min-height: 96px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .guess-row-container--correct .column-hero {
   border-color: var(--color-status-success-border);
@@ -499,7 +498,6 @@ body {
 }
 .modal-close-button { display: none; }
 
-/* Content inside the modal window */
 .modal-quote-container { text-align: center; }
 .modal-quote-text {
   font-size: 24px;
@@ -532,4 +530,18 @@ body {
   width: 100%;
   border-radius: 6px;
   display: block;
+}
+
+/* ========================= Reset Modal Window ========================= */
+
+.fx-modal-title {
+  font-size: 36px !important;
+}
+
+.fx-reset-description {
+  font-size: 24px !important;
+}
+
+.fx-reset-cancel, .fx-reset-confirm {
+  font-size: 18px !important;
 }

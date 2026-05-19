@@ -87,7 +87,7 @@ Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 ## Roadmap
 
 - [x] Introduce harder hints: hidden voice line text, grayscale image filters, and cropped/shuffled image puzzles.
-- [ ] Track detailed statistics, including wins and attempts per game.
+- [x] Track detailed statistics, including wins and attempts per game.
 - [ ] "Share Result" functionality featuring an emoji grid (Wordle-style).
 - [ ] A comprehensive encyclopedia of all heroes with advanced filtering by characteristics.
 - [ ] Implement a points-based scoring system and a definitive "Game Over" state.

@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6] - 2026-05-20
+
+### Added
+- **About Page** Introduced a dedicated section explaining the game rules, hint mechanics, and project background.
+- **Statistics Page** Added a personal stats dashboard. Players can now track their games.
+
+### Fixed
+- **Duplicate Hero Selection** Resolved an issue where players could select and submit the exact same hero.
+
+### Changed
+- **Template Optimization** Extracted shared layout structures and redundant data into a base HTML template
+
 ## [0.5] - 2026-05-06
 
 ### Added
@@ -9,7 +21,6 @@
   - **Loading Screen Puzzle:** Implemented a mechanism that divides and shuffles the target image into a puzzle.
   - **Ability Icon Rotation:** Added support for 90-degree incremental rotation (90°/180°/270°) for ability icons.
 - **Safety Confirmation:** Added a confirmation prompt for the "Reset" action to prevent accidental data loss.
-- **Statistics Tracking:** Now tracking detailed game stats, including win counts and total attempts.
 
 ### Fixed
 - **Modal Windows:** Fixed a bug that caused an empty modal window to appear.

@@ -23,6 +23,7 @@ from dotale import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('game.urls', namespace = 'game')),
+    path('stats/', include('stats.urls', namespace = 'stats')),
 ]
 
 if settings.DEBUG:

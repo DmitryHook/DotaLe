@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}DotaLe — About{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'game/css/about.css' %}">
+{% endblock %}
+
+{% block logo_subtitle %}
+<span class="logo-subtitle">About</span>
+{% endblock %}
+
+{% block content %}
+
+  <!--=============== HERO ===============-->
+  <section class="hero">
+    <div class="hero-badge">Dota 2 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Wordle</div>
+    <h1>Guess the<br>Dota 2 Hero</h1>
+    <p>A puzzle game for Dota 2 fans. Guess heroes by their traits — just like Wordle, but in the world of Dota 2.</p>
+    <a href="{% url 'game:index' %}" class="hero-cta">Start Playing</a>
+  </section>
+
+  <!--=============== WHAT IS ===============-->
+  <section class="section">
+    {% comment %} <p class="section-label">'text'</p> {% endcomment %}
+    <h2>What is DotaLe?</h2>
+    <p>DotaLe is a free browser game inspired by the famous Wordle. Instead of words — Dota 2 heroes. Each guess reveals clues about the hidden hero. The fewer attempts, the better.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Type a Name</h3>
+        <p>Start typing a hero name for autocomplete. All heroes are in the pool.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Read the Colors</h3>
+        <p>Green means "match". Yellow means "partial". Red means "wrong". Every cell is a clue.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Use the Hints</h3>
+        <p>After 4, 8, and 12 attempts a quote, an ability, and a loading screen are revealed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Guess It!</h3>
+        <p>Your goal is to guess the character as quickly as possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!--=============== COLOR SYSTEM ===============-->
+
+  <section class="section">
+    {% comment %} <p class="section-label">'text'</p> {% endcomment %}
+    <h2>Color System</h2>
+    <p>After each guess, 7 hero traits are highlighted by color. Analyze the pattern and narrow down your search.</p>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot green"></div>
+        <p><strong>Match</strong> This trait of the guessed hero fully matches the hidden hero.</p>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot yellow"></div>
+        <p><strong>Partial</strong> There are shared values — for example, one of the roles matches.</p>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot red"></div>
+        <p><strong>No Match</strong> This trait is completely different from the hidden hero.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!--=============== HINTS ===============-->
+  
+  <section class="section">
+    {% comment %} <p class="section-label">'text'</p> {% endcomment %}
+    <h2>Hints</h2>
+    <p>Stuck? Hints unlock as you make more attempts — click an active slot to reveal its content.</p>
+
+    <div class="hints-grid">
+      <div class="hint-card active">
+        <div class="hint-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg></div>
+        <div>
+          <h3>Hero Quote</h3>
+          <p>A voice line from the hero with text and audio.</p>
+          <div class="hint-after">After 4 attempts</div>
+        </div>
+      </div>
+      <div class="hint-card active">
+        <div class="hint-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+        <div>
+          <h3>Ability</h3>
+          <p>The icon and name of one of the hero's abilities.</p>
+          <div class="hint-after">After 8 attempts</div>
+        </div>
+      </div>
+      <div class="hint-card active">
+        <div class="hint-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div>
+        <div>
+          <h3>Loading Screen</h3>
+          <p>One of the hero's loading screens.</p>
+          <div class="hint-after">After 12 attempts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!--=============== FEATURES ===============-->
+
+  <section class="section">
+    {% comment %} <p class="section-label">'text'</p> {% endcomment %}
+    <h2>Why DotaLe?</h2>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-swords-icon lucide-swords"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/></svg></div>
+        <h3>All Dota2 Heroes</h3>
+        <p>Dive into a comprehensive database featuring every single hero. All stats, roles, and attributes are meticulously updated to match the current meta.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mic-vocal-icon lucide-mic-vocal"><path d="m11 7.601-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12"/><path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2-2.072-.356-2.775-3.369-1.5-4.5"/><circle cx="16" cy="7" r="5"/></svg></div>
+        <h3>Voice Lines</h3>
+        <p>Listen to original high-quality MP3 lines straight from the game. Flex your knowledge and identify the hero by their iconic voice before you even look at their stats.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hourglass-icon lucide-hourglass"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg></div>
+        <h3>Atmosphere</h3>
+        <p>Enjoy a clean, dark-themed UI, complete with sleek gold accents. No clutter, no distractions.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save-icon lucide-save"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></svg></div>
+        <h3>Progress is Saved</h3>
+        <p>Did you accidentally close the tab or refresh the page? Don't worry. Your session, current attempts, and history will remain exactly the same.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Advanced Settings</h3>
+        <p>Customize your guessing experience using the game's advanced settings. Turn it into a casual warm-up or make it a brutal puzzle by adding extra restrictions or disabling hints entirely.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hand-coins-icon lucide-hand-coins"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"/><path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 16 6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></svg></div>
+        <h3>Completely Free</h3>
+        <p>No registration, no ads, no paid features. Just open and play.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!--=============== FAQ ===============-->
+
+  <section class="section">
+    {% comment %} <p class="section-label">'text'</p> {% endcomment %}
+    <h2>FAQ</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3>Do I need to know all Dota 2 heroes?</h3>
+        <p>The better you know Dota, the faster you'll guess. But even a newcomer can logically narrow things down using the color clues. You can also consult the Dota 2 hero encyclopedia.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I guess the same hero twice?</h3>
+        <p>No. Already guessed heroes disappear from autocomplete, and the server blocks repeated attempts with the same name.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What does a yellow partial match mean?</h3>
+        <p>Some fields can have multiple values — for example, a hero can fill three roles at once. Yellow means at least one role (or species) matches, but not all of them.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the game updated?</h3>
+        <p>The hero database is updated alongside Dota 2 patches. New heroes are added to the pool after their release.</p>
+      </div>
+    </div>
+  </section>
+
+  <!--=============== FOOTER ===============-->
+  
+  <footer>
+    <p>Made with <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg> for Dota 2 fans &nbsp;·&nbsp; <a href="https://github.com/DmitryHook/DotaLe">GitHub</a> &nbsp;·&nbsp; <a href="{% url 'game:index' %}">Play</a></p>
+    <p class="footer-disclaimer">DotaLe is not an official Valve Corporation product. Dota 2 is a trademark of Valve.</p>
+  </footer>
+
+{% endblock %}

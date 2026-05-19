@@ -71,14 +71,14 @@ class GameSession:
     # ========================= Hints =========================
 
     PUZZLE_GRIDS = [
-        (  2,   1),
-        (  2,   2),
-        (  4,   2),
-        (  4,   4),
-        (  8,   4),
-        (  8,   8),
-        ( 16,   8),
-        ( 16,  16),
+        ( 2, 1),
+        ( 2, 2),
+        ( 4, 2),
+        ( 4, 4),
+        ( 8, 4),
+        ( 8, 8),
+        ( 16, 8),
+        ( 16, 16),
     ]
 
     def _generate_hint_params(self) -> None:
@@ -99,7 +99,7 @@ class GameSession:
 
         self._data['hint_params'] = {
             'ability_rotation': rotation,
-            'grids':            grids,
+            'grids': grids,
         }
 
     def get_hint_params(self) -> dict:
@@ -120,4 +120,3 @@ class GameSession:
 
     def already_guessed_names(self) -> list[str]:
         return [guess['name'] for guess in self.guesses]
-    

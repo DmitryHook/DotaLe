@@ -242,7 +242,7 @@ class BuildHintsTest(TestCase):
         self.assertIn("loading_screen", current_hints)
 
     def test_hint_content_remains_stable_on_repeated_calls(self):
-        """Проверяет, что один и тот же элемент подсказки возвращается при повторных вызовах с теми же данными сессии."""
+        """Checks that the same hint element is returned when the method is called multiple times with the same session data."""
         _, session_updates = build_hints(4, self.target_hero, {})
 
         first_hints_generation, _ = build_hints(4, self.target_hero, session_updates)
@@ -259,7 +259,7 @@ class BuildHintsTest(TestCase):
         self.assertEqual(current_hints, {})
 
 
-# ========================= Тесты Представлений (View Tests) =========================
+# ========================= View Tests =========================
 
 
 class IndexViewTest(TestCase):
@@ -473,7 +473,7 @@ class GameSessionTest(TestCase):
 
     def setUp(self):
         self.client = Client()
-        # Предполагается, что make_hero — это вспомогательный метод или фабрика
+        # It is assumed that make_hero is a helper method or a factory
         self.hero = make_hero(name="Axe")
 
     def _get_game_session_instance(self):
@@ -486,7 +486,7 @@ class GameSessionTest(TestCase):
         self.assertIn("target_id", game_data_in_session)
 
     def test_target_hero_remains_the_same_on_repeated_requests(self):
-        """Проверяет, что один и тот же целевой герой сохраняется при повторных запросах."""
+        """Ensures that the same target character is retained across repeated requests."""
         self.client.get(reverse("game:index"))
         first_target_identifier = self.client.session["game"]["target_id"]
 

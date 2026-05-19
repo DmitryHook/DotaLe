@@ -6,9 +6,8 @@ from django.views.decorators.http import require_POST, require_GET
 from game.models import Hero
 from game.services import compare_hero
 from game.session import GameSession
+from game.stats import build_stats, save_stats
 
-
-# ========================= Views =========================
 
 def index(request):
     session = GameSession(request)
@@ -23,7 +22,6 @@ def index(request):
         'revealed_name': target_hero.name if (session.won and target_hero) else None,
         'hint_params': session.get_hint_params(),
     })
-
 
 @require_GET
 def search_heroes(request):
@@ -74,17 +72,23 @@ def make_guess(request):
     comparison_result = compare_hero(guess_hero, target_hero)
     session.add_guess(comparison_result)
 
+    if comparison_result['correct']:
+        save_stats(build_stats(session, target_hero))
+
     hints = session.get_hints(target_hero)
 
     return JsonResponse({
-        'result':        comparison_result,
+        'result': comparison_result,
         'attempt_count': session.attempt_count,
-        'hints':         hints,
-        'hint_params':   session.get_hint_params(),
-        'won':           session.won,
+        'hints': hints,
+        'hint_params': session.get_hint_params(),
+        'won': session.won,
         'revealed_name': target_hero.name if session.won else None,
     })
 
 def reset_game(request):
     GameSession(request).reset()
     return redirect('game:index')
+
+def about(request):
+    return render(request, 'game/about.html')

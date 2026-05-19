@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}DotaLe — Stats Viewer{% endblock %}
+
+{% block extra_fonts %};700&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'stats/css/stats.css' %}">
+{% endblock %}
+
+{% block body_attrs %} class="stats-page"{% endblock %}
+
+{% block logo_subtitle %}
+<span class="logo-subtitle">Stats Viewer</span>
+{% endblock %}
+
+{% block header_actions %}
+<a href="{% url 'game:index' %}" class="button-reset-game">Play</a>
+{% endblock %}
+
+{% block content %}
+
+  <!--=============== Layout ===============-->
+
+  <div class="stats-layout">
+
+    <!--=============== Sidebar ===============-->
+
+    <aside class="stats-sidebar">
+      <div class="stats-sidebar-inner" id="stats-sidebar-inner">
+        {% comment %} <div class="stats-loading">
+          <div class="stats-spinner"></div>
+          <span>Loading...</span>
+        </div> {% endcomment %}
+      </div>
+    </aside>
+
+    <!--=============== Main ===============-->
+
+    <main class="stats-main">
+
+      <!--=============== Empty state ===============-->
+
+      <div class="stats-empty" id="stats-empty">
+        <div class="stats-empty-title">Select a game</div>
+        <div class="stats-empty-sub">Choose a date and game in the left panel</div>
+      </div>
+
+      <!--=============== Game view ===============-->
+
+      <div id="stats-game-view" style="display:none">
+
+        <!--=============== Banner ===============-->
+
+        <div id="stats-banner" class="victory-banner" style="display:none">
+          <div class="victory-banner-inner">
+            <div class="victory-title" id="stats-banner-title"></div>
+            <div class="victory-subtitle" id="stats-banner-subtitle"></div>
+            <div class="victory-hero-name" id="stats-banner-hero"></div>
+          </div>
+        </div>
+
+        <!--=============== Table ===============-->
+
+        <div class="history-table-container">
+          <div class="table-header-row">
+            <div class="table-column column-hero">Hero</div>
+            <div class="table-column column-gender">Gender</div>
+            <div class="table-column column-race">Species</div>
+            <div class="table-column column-role">Role</div>
+            <div class="table-column column-attribute">Attribute</div>
+            <div class="table-column column-attack">Attack Type</div>
+            <div class="table-column column-difficulty">Complexity</div>
+            <div class="table-column column-year">Release Year</div>
+          </div>
+          <div class="guesses-history-list" id="stats-guesses-list"></div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const API_BASE = '{% url "stats:stats_dates" %}'.replace('dates/', '');
+</script>
+<script src="{% static 'stats/js/stats.js' %}"></script>
+{% endblock %}

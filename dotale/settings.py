@@ -27,11 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_FILE = BASE_DIR / '.secret_key'
 
 if SECRET_FILE.exists():
-    with open(SECRET_FILE) as f:
+    with open(SECRET_FILE, encoding='utf-8') as f:
         SECRET_KEY = f.read().strip()
 else:
     SECRET_KEY = get_random_secret_key()
-    with open(SECRET_FILE, 'w') as f:
+    with open(SECRET_FILE, 'w', encoding='utf-8') as f:
         f.write(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'game',
+    'stats',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'dotale.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
