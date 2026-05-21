@@ -4,11 +4,12 @@
 
 {% block title %}DotaLe{% endblock %}
 
-{% block extra_fonts %};700&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600{% endblock %}
+{% block extra_fonts %}&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600&family=Playwrite+GB+S:wght@300;400;500;600{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'game/css/hints_effects.css' %}">
-<link rel="stylesheet" href="{% static 'shared/css/share_modal.css' %}">
+<link rel="stylesheet" href="{% static 'share/css/share_modal.css' %}">
+<link rel="stylesheet" href="{% static 'encyclopedia/css/encyclopedia.css' %}">
 {% endblock %}
 
 {% block logo_subtitle %}
@@ -16,6 +17,10 @@
 {% endblock %}
 
 {% block header_actions %}
+<button type="button" class="fx-gear-button" id="enc-trigger-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+  Encyclopedia
+</button>
 <div class="fx-options-wrapper" id="fx-options-wrapper">
   <button class="fx-gear-button fx-options-toggle" id="fx-options-toggle"
           aria-haspopup="true" aria-expanded="false">
@@ -149,13 +154,13 @@
           <span class="fx-toggle-track"></span>
         </label>
       </div>
-      <div class="fx-puzzle-slider-row" id="fx-puzzle-slider-row">
+      <div class="fx-puzzle-slider-row" id="fx-puzzle-slider-row" style="display:none"> 
         <div class="fx-puzzle-slider-labelrow">
           <span class="fx-settings-row-label">Pieces</span>
-          <span class="fx-puzzle-badge" id="fx-puzzle-badge">16</span>
+          <span class="fx-puzzle-badge" id="fx-puzzle-badge">4</span>
         </div>
         <input type="range" class="fx-puzzle-slider" id="fx-puzzle-slider"
-               min="0" max="7" step="1" value="3">
+               min="0" max="7" step="1" value="0">
       </div>
     </div>
   </div>
@@ -193,6 +198,10 @@
 <!--========================= Share Modal =========================-->
 
 {% include 'partials/share_modal.html' %}
+
+<!--========================= Encyclopedia Modal =========================-->
+
+{% include 'partials/encyclopedia_modal.html' %}
 
 <!--========================= Notifications =========================-->
 
@@ -283,18 +292,22 @@
 {% endblock %}
 
 {% block extra_js %}
-<script>
-  const CONFIGURATION = {
-    csrfToken: '{{ csrf_token }}',
-    isGameWon: {{ won|yesno:"true,false" }},
-    attemptsInitialCount: {{ attempt_count }},
-    hintParams: {{ hint_params|safe }},
-    aboutUrl: '{% url "game:about" %}',
-    resetUrl: '{% url "game:reset_game" %}',
-  };
-</script>
-<script src="{% static 'game/js/game.js' %}"></script>
-<script src="{% static 'game/js/hints_effects.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="{% static 'shared/js/share_modal.js' %}"></script>
+  {{ guesses|json_script:"enc-guesses-data" }}
+  <script>
+    const CONFIGURATION = {
+      csrfToken: '{{ csrf_token }}',
+      isGameWon: {{ won|yesno:"true,false" }},
+      attemptsInitialCount: {{ attempt_count }},
+      hintParams: {{ hint_params|safe }},
+      aboutUrl: '{% url "game:about" %}',
+      resetUrl: '{% url "game:reset_game" %}',
+      encyclopediaUrl: '{% url "game:encyclopedia_heroes" %}',
+      guessedHeroNames: [{% for g in guesses %}"{{ g.name|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}],
+    };
+  </script>
+  <script src="{% static 'game/js/game.js' %}"></script>
+  <script src="{% static 'game/js/hints_effects.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="{% static 'share/js/share_modal.js' %}"></script>
+  <script src="{% static 'encyclopedia/js/encyclopedia.js' %}"></script>
 {% endblock %}

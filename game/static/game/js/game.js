@@ -194,6 +194,11 @@
       appendNewGuessToHistoryTable(data.result);
       guessesHistory.unshift(data.result);
 
+      // Send data to encyclopedia
+      if (window.registerEncyclopediaGuess) {
+        window.registerEncyclopediaGuess(data.result);
+      }
+
       // Send data to share modal without animation race condition
       window._gameGuesses = [...guessesHistory].reverse().map(g => ({
         fields: Object.fromEntries(

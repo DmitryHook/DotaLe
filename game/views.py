@@ -9,6 +9,8 @@ from game.session import GameSession
 from game.stats import build_stats, save_stats
 
 
+# =============== Index View ===============
+
 def index(request):
     session = GameSession(request)
     target_hero = session.get_target()
@@ -86,9 +88,38 @@ def make_guess(request):
         'revealed_name': target_hero.name if session.won else None,
     })
 
+# =============== Reset View ===============
+
 def reset_game(request):
     GameSession(request).reset()
     return redirect('game:index')
 
+# =============== About View ===============
+
 def about(request):
     return render(request, 'game/about.html')
+
+# ============== Encyclopedia View ===============
+
+@require_GET
+def encyclopedia_heroes(request):
+    heroes = Hero.objects.all().order_by('name')
+    results = []
+    for hero in heroes:
+        try:
+            image = hero.image.url if hero.image else None
+        except Exception:
+            image = None
+        results.append({
+            'id': hero.id,
+            'name': hero.name,
+            'image': image,
+            'gender': hero.gender,
+            'species': hero.species,
+            'position': hero.position,
+            'attribute': hero.attribute,
+            'attack_type': hero.attack_type,
+            'complexity': hero.complexity,
+            'date': hero.date,
+        })
+    return JsonResponse({'heroes': results})

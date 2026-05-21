@@ -1,0 +1,90 @@
+{% load static %}
+
+<!--=============== Encyclopedia Modal ===============-->
+
+<div class="enc-overlay" id="enc-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Hero Encyclopedia">
+  <div class="enc-modal" id="enc-modal">
+
+    <!--=============== Header ===============-->
+
+    <div class="enc-header">
+      <span class="enc-title">Encyclopedia</span>
+        <div class="enc-header-actions">
+          <button class="enc-info-btn" id="enc-info-btn" aria-label="Help" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span class="enc-tooltip">
+              <strong>How to use:</strong><br>
+              Left click to select a field for filtering.<br>
+              Right click to exclude a field from filtering.<br>
+              <kbd class="enc-kbd">G</kbd> Apply filters from selected guesses fields<br>
+              <kbd class="enc-kbd">Q</kbd> Restore previous values<br>
+              <kbd class="enc-kbd">R</kbd> Clear filters<br>
+            </span>
+          </button>
+          <button class="enc-close" id="enc-close" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
+      </div>
+    </div>
+
+    <!--=============== Filters ===============-->
+
+    <div class="enc-filters" id="enc-filters">
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Gender</span>
+        <div class="enc-filter-chips" id="enc-chips-gender" data-filter="gender"></div>
+      </div>
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Species</span>
+        <div class="enc-filter-chips" id="enc-chips-species" data-filter="species"></div>
+      </div>
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Role</span>
+        <div class="enc-filter-chips" id="enc-chips-position" data-filter="position"></div>
+      </div>
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Attribute</span>
+        <div class="enc-filter-chips" id="enc-chips-attribute" data-filter="attribute"></div>
+      </div>
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Attack Type</span>
+        <div class="enc-filter-chips" id="enc-chips-attack_type" data-filter="attack_type"></div>
+      </div>
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Complexity</span>
+        <div class="enc-filter-chips" id="enc-chips-complexity" data-filter="complexity"></div>
+      </div>
+      <div class="enc-filter-group">
+        <span class="enc-filter-label">Release Year</span>
+        <div class="enc-filter-chips" id="enc-chips-date" data-filter="date"></div>
+      </div>
+    </div>
+
+    <!--=============== Actions Bar ===============-->
+
+    <div class="enc-stats-bar">
+      <span class="enc-count" id="enc-count">Loading...</span>
+      <div class="enc-stats-actions">
+        <button class="enc-apply-guesses-filters" id="enc-apply-guesses-filters" title="Set filters from your guesses (G)">
+          Apply guesses <kbd class="enc-kbd">G</kbd>
+        </button>
+        <button class="enc-restore-filters" id="enc-restore-filters" title="Restore last saved filters (Q)">
+          Restore <kbd class="enc-kbd">Q</kbd>
+        </button>
+        <button class="enc-reset-filters" id="enc-reset-filters" title="Clear all filters (R)">
+          Clear <kbd class="enc-kbd">R</kbd>
+        </button>
+      </div>
+    </div>
+
+    <!--=============== Grid ===============-->
+
+    <div class="enc-grid-wrapper" id="enc-grid-wrapper">
+      <div class="enc-grid" id="enc-grid">
+        <div class="enc-loading">
+          <div class="enc-spinner"></div>
+          <span>Loading heroes...</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

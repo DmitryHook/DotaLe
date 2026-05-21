@@ -44,7 +44,6 @@ body {
       rgba(255,255,255,.015) 39px,
       rgba(255,255,255,.015) 40px
     );
-  overflow: hidden;
 }
 
 /* ========================= Site Header ========================= */
@@ -102,6 +101,124 @@ body {
 .button-reset-game:hover {
   color: var(--color-accent-gold);
   border-color: var(--color-accent-gold);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Keep .button-reset-game styles for stats page back-link */
+.button-reset-game {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.fx-options-wrapper {
+  position: relative;
+}
+
+.fx-gear-button,
+.fx-options-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--color-border-standard);
+  border-radius: var(--border-radius-standard);
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-text-dimmed);
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+  line-height: normal;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+}
+
+.fx-gear-button:hover,
+.fx-options-toggle:hover,
+.fx-options-toggle--active {
+  color: var(--color-accent-gold);
+  border-color: var(--color-accent-gold);
+}
+
+.fx-options-chevron {
+  font-size: 11px;
+  opacity: .7;
+  transition: transform .2s;
+}
+
+.fx-options-toggle--active .fx-options-chevron {
+  transform: rotate(180deg);
+}
+
+.fx-options-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-standard);
+  border-radius: var(--border-radius-standard);
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  z-index: 200;
+  overflow: hidden;
+  animation: fx-menu-in .15s ease;
+}
+
+.fx-options-menu--open {
+  display: block;
+}
+
+@keyframes fx-menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fx-options-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-standard);
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: var(--color-text-main);
+  text-align: left;
+  transition: background .15s, color .15s;
+}
+
+.fx-options-item:last-child {
+  border-bottom: none;
+}
+
+.fx-options-item:hover {
+  background: rgba(200,155,60,.1);
+  color: var(--color-accent-gold-light);
+}
+
+.fx-options-item-icon {
+  font-size: 15px;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 /* ========================= Hints Bar ========================= */
@@ -178,7 +295,7 @@ html, body {
 /* ========================= Victory Banner ========================= */
 
 .victory-banner-inner {
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Playwrite GB S', sans-serif; 
 }
 .victory-banner {
   text-align: center;
@@ -195,7 +312,7 @@ html, body {
   to   { transform: scale(1); opacity: 1; }
 }
 .victory-title {
-  font-family: 'Roboto Mono', serif;
+  font-family: 'Playwrite GB S', serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,7 +324,7 @@ html, body {
 }
 .victory-subtitle { font-size: 24px; color: var(--color-text-main); margin-bottom: 8px; }
 .victory-hero-name {
-  font-family: 'Roboto', serif;
+  font-family: 'Playwrite GB S', serif;
   font-size: 24px;
   color: var(--color-status-success-border);
   font-weight: 600;

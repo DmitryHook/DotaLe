@@ -3,11 +3,11 @@
 
 {% block title %}DotaLe — Stats Viewer{% endblock %}
 
-{% block extra_fonts %};700&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600{% endblock %}
+{% block extra_fonts %}&family=Roboto:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500;600&family=Playwrite+GB+S:wght@300;400;500;600{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'stats/css/stats.css' %}">
-<link rel="stylesheet" href="{% static 'shared/css/share_modal.css' %}">
+<link rel="stylesheet" href="{% static 'share/css/share_modal.css' %}">
 {% endblock %}
 
 {% block body_attrs %} class="stats-page"{% endblock %}
@@ -96,5 +96,5 @@
 </script>
 <script src="{% static 'stats/js/stats.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="{% static 'shared/js/share_modal.js' %}"></script>
+<script src="{% static 'share/js/share_modal.js' %}"></script>
 {% endblock %}

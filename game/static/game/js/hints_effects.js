@@ -4,14 +4,14 @@
   'use strict';
 
   const DEFAULT_VISUAL_CONFIG = {
-    quote_blur: true,
-    ability_blur: true,
-    ability_grayscale: true,
-    ability_rotate: true,
-    loading_grayscale: true,
-    loading_puzzle: true,
-    puzzle_cols: 4,
-    puzzle_rows: 4,
+    quote_blur: false,
+    ability_blur: false,
+    ability_grayscale: false,
+    ability_rotate: false,
+    loading_grayscale: false,
+    loading_puzzle: false,
+    puzzle_cols: 2,
+    puzzle_rows: 2,
   };
 
   const STORAGE_KEY = 'dotale_fx_settings';

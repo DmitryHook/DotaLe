@@ -18,4 +18,6 @@ urlpatterns = [
     path('api/', include(api_patterns)),
 
     path('stats/', include('stats.urls', namespace='stats')),
+
+    path('encyclopedia/', views.encyclopedia_heroes, name='encyclopedia_heroes'),
 ]

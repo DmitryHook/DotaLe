@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7] - 2026-05-23
+
+### Added
+- **Encyclopedia** Added an encyclopedia containing all heroes with filtering by all key attributes.
+
+### Changed
+- **Font** The font for the victory banner has been changed to "Playwrite GB S" from "Roboto"
+
 ## [0.6.5] - 2026-05-21
 
 ### Added
