@@ -60,7 +60,7 @@ nav a {
   transition: color .2s;
 }
 
-nav a:hover { color: var(--gold); }
+nav a:hover { color: var(--gold); transform: translateY(-3px); }
 
 /* ========================= HERO ========================= */
 
@@ -173,7 +173,7 @@ nav a:hover { color: var(--gold); }
   transition: border-color .2s;
 }
 
-.step:hover { border-color: var(--gold); }
+.step:hover { border-color: var(--gold); transform: translateY(-3px); }
 
 .step-num {
   font-family: 'Roboto', serif;
@@ -237,6 +237,8 @@ nav a:hover { color: var(--gold); }
   flex: 1; min-width: 200px;
 }
 
+.legend-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+
 .legend-dot {
   width: 72px; height: 72px;
   border-radius: 6px; flex-shrink: 0;
@@ -266,7 +268,7 @@ nav a:hover { color: var(--gold); }
   align-items: flex-start;
 }
 
-.hint-card.active { border-color: var(--gold); }
+.hint-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 
 .hint-icon { font-size: 28px; flex-shrink: 0; }
 
@@ -307,7 +309,7 @@ footer {
 
 footer p { font-size: 24px; color: var(--text-dim); }
 footer a { color: var(--gold); text-decoration: none; }
-footer a:hover { color: var(--gold-light); }
+footer a:hover { color: var(--gold-light); transform: translateY(-3px); }
 
 .footer-disclaimer { margin-top: 8px; font-size: 16px; }
 

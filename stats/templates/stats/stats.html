@@ -7,6 +7,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'stats/css/stats.css' %}">
+<link rel="stylesheet" href="{% static 'shared/css/share_modal.css' %}">
 {% endblock %}
 
 {% block body_attrs %} class="stats-page"{% endblock %}
@@ -58,6 +59,9 @@
             <div class="victory-title" id="stats-banner-title"></div>
             <div class="victory-subtitle" id="stats-banner-subtitle"></div>
             <div class="victory-hero-name" id="stats-banner-hero"></div>
+            <div class="victory-buttons">
+              <button class="button-start-new-game button-share-result" id="stats-share-btn">Share</button>
+            </div>
           </div>
         </div>
 
@@ -82,6 +86,8 @@
 
   </div>
 
+  {% include 'partials/share_modal.html' %}
+
 {% endblock %}
 
 {% block extra_js %}
@@ -89,4 +95,6 @@
   const API_BASE = '{% url "stats:stats_dates" %}'.replace('dates/', '');
 </script>
 <script src="{% static 'stats/js/stats.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="{% static 'shared/js/share_modal.js' %}"></script>
 {% endblock %}

@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.5] - 2026-05-21
+
+### Added
+- **Share Result** Added the ability to share your result.
+
+### Fixed
+- **Extra scrollbar** Fixed an issue that caused an unnecessary window scrollbar to appear on the statistics page.
+
+### Changed
+- **Cell Animation** New animation for cells.
+
 ## [0.6] - 2026-05-20
 
 ### Added

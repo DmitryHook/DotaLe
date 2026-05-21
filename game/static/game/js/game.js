@@ -5,7 +5,69 @@
 (function () {
   'use strict';
 
-  if (CONFIGURATION.isGameWon) return; // If the game has already been won, the script does not initialize.
+  // ========================= DOM Elements (shared) =========================
+
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalContentBody = document.getElementById('modal-content-body');
+
+  // ========================= Hint Modal / Templates =========================
+
+  function openHintModal(contentHtml) {
+    if (!modalOverlay || !modalContentBody) return;
+    modalContentBody.innerHTML = contentHtml;
+    modalOverlay.classList.add('modal-overlay--visible');
+  }
+
+  function buildHintModalContent(hintSlotElement) {
+    const hintType = hintSlotElement.dataset.hintType;
+
+    if (hintType === 'quote') {
+      const text = hintSlotElement.dataset.text;
+      const audioUrl = hintSlotElement.dataset.mp3;
+      return `
+        <div class="modal-quote-container">
+          <p class="modal-quote-text">«${text}»</p>
+          ${audioUrl ? `<audio controls class="modal-audio-player"><source src="${audioUrl}" type="audio/mpeg"></audio>` : ''}
+        </div>`;
+    }
+
+    if (hintType === 'ability') {
+      const name = hintSlotElement.dataset.name.replace(/\.png$/i, '');
+      const iconUrl = hintSlotElement.dataset.icon;
+      return `
+        <div class="modal-ability-container">
+          ${iconUrl ? `<img src="${iconUrl}" alt="${name}" class="modal-ability-icon">` : ''}
+          <span class="modal-ability-name">${name}</span>
+        </div>`;
+    }
+
+    if (hintType === 'loading-screen') {
+      const imageUrl = hintSlotElement.dataset.image;
+      return `<img src="${imageUrl}" alt="Loading screen" class="modal-loading-screen-image">`;
+    }
+
+    return '';
+  }
+
+  // ========================= Hint Slots — always initialized =========================
+
+  function initializeHintSlots() {
+    document.querySelectorAll('.hint-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        if (!slot.classList.contains('hint-slot--active')) return;
+        openHintModal(buildHintModalContent(slot));
+      });
+    });
+
+    modalOverlay?.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) modalOverlay.classList.remove('modal-overlay--visible');
+    });
+  }
+
+  initializeHintSlots();
+
+  // If the game has already been won, the script does not initialize further.
+  if (CONFIGURATION.isGameWon) return;
 
   // ========================= DOM Elements =========================
 
@@ -14,21 +76,20 @@
   const autocompleteDropdown = document.getElementById('autocomplete-dropdown');
   const guessesHistoryList = document.getElementById('guesses-history-list');
   const notificationToast = document.getElementById('notification-toast');
-  const modalOverlay = document.getElementById('modal-overlay');
-  const modalContentBody = document.getElementById('modal-content-body');
 
   // ========================= State =========================
 
   let currentAutocompleteResults = []; // Hero selection list
   let selectedAutocompleteIndex = -1; // Current selection index
   let autocompleteDebounceTimer = null;
+  let guessesHistory = []; // Guesses history for share modal
 
   // ========================= Notifications =========================
 
   function displayNotificationToast(message, type = 'info') {
     notificationToast.textContent = message;
     notificationToast.className = `notification-toast notification-toast--visible notification-toast--${type}`;
-    
+
     clearTimeout(notificationToast._hideTimer);
     notificationToast._hideTimer = setTimeout(() => {
       notificationToast.classList.remove('notification-toast--visible');
@@ -84,7 +145,7 @@
   function selectHeroFromAutocomplete(index) {
     const hero = currentAutocompleteResults[index];
     if (!hero) return;
-    
+
     heroSearchInput.value = hero.name;
     closeAutocompleteDropdown();
     handleGuessSubmission();
@@ -106,7 +167,7 @@
       displayNotificationToast('Enter hero name or select from the list', 'error');
       return;
     }
-
+    
     // Disabling the button during the request
     heroSearchButton.disabled = true;
     heroSearchButton.textContent = '...';
@@ -131,6 +192,16 @@
       }
 
       appendNewGuessToHistoryTable(data.result);
+      guessesHistory.unshift(data.result);
+
+      // Send data to share modal without animation race condition
+      window._gameGuesses = [...guessesHistory].reverse().map(g => ({
+        fields: Object.fromEntries(
+          Object.entries(g.fields).map(([k, v]) => [k, { status: v.status, value: v.value }])
+        ),
+        heroImage: g.image ? g.image.replace('/heroes/', '/heroes_minimap/') : null,
+        correct: g.correct,
+      }));
 
       if (data.hints) {
         updateHintsVisualState(data.hints);
@@ -175,61 +246,55 @@
       'attack_type', 'complexity', 'date'
     ];
 
-    FIELD_DISPLAY_ORDER.forEach(fieldKey => {
+    const cellsData = FIELD_DISPLAY_ORDER.map(fieldKey => {
       const fieldData = guessResult.fields[fieldKey];
-      if (!fieldData) return;
+      const displayValue = Array.isArray(fieldData.value) ? fieldData.value.join(', ') : fieldData.value;
 
       const cellElement = document.createElement('div');
-      cellElement.className = `table-column table-field-cell cell-status-${fieldData.status}`;
-      
-      const displayValue = Array.isArray(fieldData.value) ? fieldData.value.join(', ') : fieldData.value;
-      
-      let cellInnerHtml = `<span class="field-value-text">${displayValue}</span>`;
-      
-      cellElement.innerHTML = cellInnerHtml;
+      cellElement.className = 'table-column table-field-cell';
+      cellElement.style.background = 'var(--color-background-tertiary)';
+      cellElement.style.border = '1px solid var(--color-border-standard)';
+      cellElement.innerHTML = `<span class="field-value-text" style="visibility:hidden">${displayValue}</span>`;
+
       rowElement.appendChild(cellElement);
+      return { cellElement, fieldData, displayValue };
     });
 
     guessesHistoryList.prepend(rowElement);
-  }
+    // Animation code
+    requestAnimationFrame(() => {
+      cellsData.forEach(({ cellElement, fieldData, displayValue }, i) => {
+        setTimeout(() => {
+          if (cellElement._animTimer) {
+            clearTimeout(cellElement._animTimer);
+            cellElement._animTimer = null;
+          }
+          
+          // 1: Remove the transition and reset to 0.
+          cellElement.style.transition = 'none';
+          cellElement.style.transform = 'rotateY(0deg)';
 
-  // ========================= Modal / Templates =========================
+          // 2: Wait 2 frames so the browser definitely applies the changes.
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              cellElement.style.transition = 'transform 0.15s ease-in';
+              cellElement.style.transform = 'rotateY(90deg)';
 
-  function openHintModal(contentHtml) {
-    if (!modalOverlay || !modalContentBody) return;
-    modalContentBody.innerHTML = contentHtml;
-    modalOverlay.classList.add('modal-overlay--visible');
-  }
+              cellElement._animTimer = setTimeout(() => {
+                cellElement._animTimer = null;
+                cellElement.className = `table-column table-field-cell cell-status-${fieldData.status}`;
+                cellElement.style.background = '';
+                cellElement.style.border = '';
+                cellElement.innerHTML = `<span class="field-value-text">${displayValue}</span>`;
 
-  function buildHintModalContent(hintSlotElement) {
-    const hintType = hintSlotElement.dataset.hintType;
-    
-    if (hintType === 'quote') {
-      const text = hintSlotElement.dataset.text;
-      const audioUrl = hintSlotElement.dataset.mp3;
-      return `
-        <div class="modal-quote-container">
-          <p class="modal-quote-text">«${text}»</p>
-          ${audioUrl ? `<audio controls class="modal-audio-player"><source src="${audioUrl}" type="audio/mpeg"></audio>` : ''}
-        </div>`;
-    }
-    
-    if (hintType === 'ability') {
-      const name = hintSlotElement.dataset.name.replace(/\.png$/i, '');
-      const iconUrl = hintSlotElement.dataset.icon;
-      return `
-        <div class="modal-ability-container">
-          ${iconUrl ? `<img src="${iconUrl}" alt="${name}" class="modal-ability-icon">` : ''}
-          <span class="modal-ability-name">${name}</span>
-        </div>`;
-    }
-    
-    if (hintType === 'loading-screen') {
-      const imageUrl = hintSlotElement.dataset.image;
-      return `<img src="${imageUrl}" alt="Loading screen" class="modal-loading-screen-image">`;
-    }
-    
-    return '';
+                cellElement.style.transition = 'transform 0.15s linear';
+                cellElement.style.transform = 'rotateY(0deg)';
+              }, 150);
+            });
+          });
+        }, i * 350);
+      });
+    });
   }
 
   // ========================= Update UI =========================
@@ -239,7 +304,7 @@
       const remaining = Math.max(0, threshold - currentAttempts);
       const element = document.querySelector(`#${id} .hint-status-message`);
       if (!element) return;
-      
+
       if (remaining === 0) {
         element.textContent = 'Click to open';
       } else {
@@ -288,6 +353,13 @@
       clone.querySelector('[data-attempts-word]').textContent = attemptsCount === 1 ? 'attempt' : 'attempts';
       clone.querySelector('[data-hero-name]').textContent = heroName;
       clone.querySelector('[data-reset-href]').href = CONFIGURATION.resetUrl || '/reset/';
+
+      const shareBtn = clone.querySelector('.button-share-result');
+      if (shareBtn) {
+        shareBtn.dataset.heroName = heroName;
+        shareBtn.dataset.attempts = attemptsCount;
+      }
+
       mainContainer.insertBefore(clone, mainContainer.firstChild);
     }
 
@@ -295,7 +367,7 @@
   }
 
   // ========================= Event Listeners =========================
-  
+
   function initializeEventListeners() {
     heroSearchInput.addEventListener('input', () => {
       const query = heroSearchInput.value.trim();
@@ -358,16 +430,6 @@
         closeAutocompleteDropdown();
       }
     });
-
-    // Click on hint
-    document.querySelectorAll('.hint-slot').forEach(slot => {
-      slot.addEventListener('click', () => {
-        if (!slot.classList.contains('hint-slot--active')) return;
-        const hintContent = buildHintModalContent(slot);
-        openHintModal(hintContent);
-      });
-    });
-
   }
 
   // ========================= Initialization =========================

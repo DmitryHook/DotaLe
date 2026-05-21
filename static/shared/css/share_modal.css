@@ -1,0 +1,224 @@
+/* =============== Modal overlay =============== */
+
+.share-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+.share-modal-overlay--visible {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* =============== Modal Window =============== */
+
+.share-modal-window {
+  position: relative;
+  background: #1a1c24;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 32px 28px 24px;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  transform: translateY(12px) scale(0.97);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  overflow: hidden;
+}
+
+.share-modal-overlay--visible .share-modal-window {
+  transform: translateY(0) scale(1);
+}
+
+/* =============== Close Button =============== */
+
+.share-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 17px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-modal-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* =============== Share Card Container & Scrollbar =============== */
+
+.share-card {
+  background: #111318;
+  border-radius: 12px;
+  padding: 22px 24px 18px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-top: 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3a3f52 #111318;
+}
+
+.share-card::-webkit-scrollbar { width: 4px; }
+.share-card::-webkit-scrollbar-track { background: #111318; border-radius: 2px; }
+.share-card::-webkit-scrollbar-thumb { background: #3a3f52; border-radius: 2px; }
+.share-card::-webkit-scrollbar-thumb:hover { background: #5a6b8c; }
+
+/* =============== Share Card Header =============== */
+
+.share-card-logo {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.share-card-subtitle {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-top: -6px;
+}
+
+/* =============== Grid & Cells =============== */
+
+.share-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.share-grid-row {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.share-grid-hero-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #2a2d3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-grid-hero-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.share-grid-hero-icon--empty {
+  background: #2a2d3a;
+}
+
+.share-grid-cell {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.share-grid-cell--correct { background: #538d4e; }
+.share-grid-cell--partial { background: #b59f3b; }
+.share-grid-cell--wrong   { background: #3a3a3c; }
+
+/* =============== Share Card Footer =============== */
+
+.share-card-footer {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* =============== Buttons =============== */
+
+.share-modal-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.share-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+
+.share-btn:hover  { filter: brightness(1.12); }
+.share-btn:active { transform: scale(0.97); }
+
+.share-btn--download {
+  background: #538d4e;
+  color: #fff;
+}
+
+.share-btn--copy {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =============== Notifications =============== */
+
+.share-modal-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  min-height: 16px;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.share-modal-hint--success { color: #538d4e; }
+.share-modal-hint--error   { color: #c0392b; }

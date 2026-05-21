@@ -172,7 +172,7 @@ html, body {
 
 .guesses-history-list {
   max-height: none !important;
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 /* ========================= Victory Banner ========================= */
@@ -188,7 +188,7 @@ html, body {
   border: 1px solid var(--color-status-success-border);
   border-radius: 12px;
   box-shadow: 0 0 40px rgba(39,174,96,.2);
-  animation: victoryAnimationFadeIn .6s cubic-bezier(.34,1.56,.64,1);
+  animation:  victoryAnimationFadeIn .6s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes victoryAnimationFadeIn {
   from { transform: scale(.8); opacity: 0; }
@@ -228,6 +228,28 @@ html, body {
   transition: background .2s;
 }
 .button-start-new-game:hover { background: var(--color-accent-gold-light); }
+
+/* ========================= Victory Buttons ========================= */
+
+.victory-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.victory-buttons .button-start-new-game {
+  flex: 1;
+  max-width: 240px;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  cursor: pointer;
+  border: none;
+}
 
 /* ========================= Search and Auto Complete ========================= */
 
@@ -352,11 +374,7 @@ html, body {
 
 /* Table row */
 .guess-row-container {
-  animation: rowAnimationSlideIn .4s ease;
-}
-@keyframes rowAnimationSlideIn {
-  from { transform: translateY(-12px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+  opacity: 1;
 }
 
 .table-field-cell {
@@ -368,6 +386,7 @@ html, body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  transform-style: flat;
 }
 
 .cell-status-correct {

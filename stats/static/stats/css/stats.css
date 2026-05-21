@@ -11,8 +11,8 @@
   margin: 0;
 }
 
-body {
-  overflow: hidden;
+html, body {
+  overflow: hidden !important;
 }
 
 /* =============== Layout =============== */
@@ -26,17 +26,23 @@ body {
 /* =============== Sidebar =============== */
 
 .stats-sidebar {
-  width: 280px;
-  flex-shrink: 0;
-  border-right: 1px solid var(--color-border-standard);
-  background: var(--color-background-secondary);
-  overflow-y: auto;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(80, 92, 108) #111520;
 }
 
-.stats-sidebar::-webkit-scrollbar { width: 4px; }
+.stats-sidebar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.stats-sidebar::-webkit-scrollbar-track {
+  background: #111520;
+}
+
 .stats-sidebar::-webkit-scrollbar-thumb {
-  background: var(--color-border-standard);
-  border-radius: 2px;
+  background-color: #c89b3c !important;
+  border-radius: 999px;
+  border: 3px solid #111520;
 }
 
 .stats-sidebar-inner {
@@ -132,9 +138,13 @@ body {
   flex: 1;
   overflow-y: auto;
   min-width: 0;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgb(80, 92, 108) #111520;
 }
 
 .stats-main::-webkit-scrollbar { width: 5px; }
+
 .stats-main::-webkit-scrollbar-thumb {
   background: var(--color-border-standard);
   border-radius: 2px;
