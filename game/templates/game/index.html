@@ -8,6 +8,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'game/css/hints_effects.css' %}">
+<link rel="stylesheet" href="{% static 'game/css/hp_mode.css' %}">
 <link rel="stylesheet" href="{% static 'share/css/share_modal.css' %}">
 <link rel="stylesheet" href="{% static 'encyclopedia/css/encyclopedia.css' %}">
 {% endblock %}
@@ -19,7 +20,7 @@
 {% block header_actions %}
 <button type="button" class="fx-gear-button" id="enc-trigger-btn">
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-  Encyclopedia
+  <span>Encyclopedia</span>
 </button>
 <div class="fx-options-wrapper" id="fx-options-wrapper">
   <button class="fx-gear-button fx-options-toggle" id="fx-options-toggle"
@@ -195,6 +196,10 @@
   </div>
 </template>
 
+<!--========================= Challenge Mode Templates =========================-->
+
+{% include 'game/hp_mode_templates.html' %}
+
 <!--========================= Share Modal =========================-->
 
 {% include 'partials/share_modal.html' %}
@@ -214,7 +219,8 @@
   <!--========================= Win Banner =========================-->
 
   {% if won %}
-  <div class="victory-banner" id="victory-banner">
+  {# id="victory-banner-server" — hp_mode.js hides this banner and displays its own when Challenge mode is enabled #}
+  <div class="victory-banner" id="victory-banner-server">
     <div class="victory-banner-inner">
       <div class="victory-title">
         Victory!
@@ -303,10 +309,17 @@
       resetUrl: '{% url "game:reset_game" %}',
       encyclopediaUrl: '{% url "game:encyclopedia_heroes" %}',
       guessedHeroNames: [{% for g in guesses %}"{{ g.name|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}],
+      {% if won %}
+      revealedName: '{{ revealed_name|escapejs }}',
+      attemptCount: {{ attempt_count }},
+      {% endif %}
+      gameSettings: {{ GAME_SETTINGS|default:"null"|safe }},
+      hpSettings: {{ HP_SETTINGS|default:"null"|safe }},
     };
   </script>
   <script src="{% static 'game/js/game.js' %}"></script>
   <script src="{% static 'game/js/hints_effects.js' %}"></script>
+  <script src="{% static 'game/js/hp_mode.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="{% static 'share/js/share_modal.js' %}"></script>
   <script src="{% static 'encyclopedia/js/encyclopedia.js' %}"></script>

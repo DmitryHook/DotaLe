@@ -1,0 +1,373 @@
+/* =============== Variables & Animations =============== */
+
+@keyframes hpBarAppear {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.25); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.12); }
+}
+
+@keyframes criticalPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes deltaFloat {
+  0% { opacity: 0; transform: translateY(4px) scale(0.85); }
+  15% { opacity: 1; transform: translateY(0) scale(1.1); }
+  70% { opacity: 1; transform: translateY(-4px) scale(1); }
+  100% { opacity: 0; transform: translateY(-13px) scale(0.9); }
+}
+
+@keyframes defeatFadeIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* =============== Hp Bar (Main Container) =============== */
+
+.hp-mode-bar {
+  margin: 8px 0;
+  width: 100%;
+  position: relative;
+  /* animation: hpBarAppear 0.35s ease; */
+}
+
+.hp-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(90deg, rgba(139, 26, 26, 0.22) 0%, rgba(17, 21, 32, 0.6) 100%);
+  border: 1px solid rgba(192, 57, 43, 0.35);
+  border-radius: var(--border-radius-standard);
+  padding: 9px 14px;
+}
+
+/* =============== Hp Bar Elements =============== */
+
+.hp-bar-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.hp-bar-icon {
+  font-size: 14px;
+  color: #e05555;
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+.hp-bar-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #e05555;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hp-bar-level {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-accent-gold);
+  background: rgba(200, 155, 60, 0.1);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  border-radius: 3px;
+  padding: 1px 6px;
+  white-space: nowrap;
+  min-width: 44px;
+  text-align: center;
+}
+
+.hp-bar-track-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hp-bar-track {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
+  width: 100%;
+}
+
+/* HP Fill State Gradients */
+.hp-bar-fill--high { background: linear-gradient(90deg, #1e8449, #27ae60); }
+.hp-bar-fill--mid { background: linear-gradient(90deg, #b7950b, #d4ac0d); }
+.hp-bar-fill--low { background: linear-gradient(90deg, #af601a, #ca6f1e); }
+.hp-bar-fill--critical {
+  background: linear-gradient(90deg, #922b21, #e74c3c);
+  animation: criticalPulse 0.75s ease-in-out infinite;
+}
+
+.hp-bar-value {
+  font-family: 'Roboto', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-main);
+  min-width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.hp-bar-score-display {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-accent-gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 1px 8px;
+  background: rgba(200, 155, 60, 0.08);
+  border: 1px solid rgba(200, 155, 60, 0.2);
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+/* Floating damage / healing popup (Delta popup) */
+.hp-bar-delta {
+  position: relative;
+  width: 44px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.hp-delta-popup {
+  position: absolute;
+  left: 0; top: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  animation: deltaFloat 1.15s ease forwards;
+}
+
+.hp-delta-popup--gain { color: #2ecc71; }
+.hp-delta-popup--loss { color: #e74c3c; }
+
+/* =============== Game Banners =============== */
+
+.hp-defeat-banner {
+  text-align: center;
+  padding: 40px 24px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(139, 26, 26, 0.45), rgba(10, 12, 16, 0.7));
+  border: 1px solid var(--color-status-error-border);
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.28);
+  animation: defeatFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hp-defeat-title {
+  color: #e74c3c !important;
+  text-shadow: 0 0 24px rgba(231, 76, 60, 0.4);
+}
+
+.hp-defeat-hint {
+  font-size: 17px !important;
+  color: var(--color-text-dimmed) !important;
+}
+
+.hp-mode-bar--dead { pointer-events: none; }
+.hp-mode-bar--dead .hp-bar-icon { animation: none; color: #555; }
+.hp-mode-bar--dead .hp-bar-title { color: #555; }
+.hp-mode-bar--dead .hp-bar-level { opacity: 0.3; }
+.hp-mode-bar--dead .hp-bar-fill { animation: none !important; filter: grayscale(1); }
+
+.hp-run-complete-title {
+  color: var(--color-accent-gold) !important;
+  text-shadow: 0 0 30px rgba(200, 155, 60, 0.5);
+}
+
+.hp-result-meta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.hp-result-meta--score {
+  margin-top: 6px;
+}
+
+.hp-result-badge {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  background: rgba(200, 155, 60, 0.1);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.hp-result-score {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  background: rgba(200, 155, 60, 0.1);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.hp-result-badge--champion {
+  font-size: 18px;
+  padding: 6px 18px;
+  color: var(--color-accent-gold);
+  background: rgba(200, 155, 60, 0.15);
+  border-color: rgba(200, 155, 60, 0.5);
+}
+
+/* =============== Level Separator =============== */
+
+.hp-level-separator {
+  padding: 6px 0;
+  margin: 4px 0;
+}
+
+.hp-level-separator-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hp-level-separator-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-standard);
+  opacity: 0.6;
+}
+
+.hp-level-separator-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Red text variant for defeat screen sections */
+.hp-level-separator--defeat .hp-level-separator-text {
+  color: #e74c3c;
+}
+
+/* =============== Tooltips =============== */
+
+.hint-slot, #enc-trigger-btn {
+  position: relative;
+}
+
+.hint-slot[data-hp-tooltip]::after, #enc-trigger-btn[data-hp-tooltip]::after {
+  content: attr(data-hp-tooltip);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0e1117;
+  color: #e8e8e8;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 10px 45px;
+  border-radius: 8px;
+  border: 1.5px solid #b8922a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+
+.hint-slot[data-hp-tooltip]:hover::after, #enc-trigger-btn[data-hp-tooltip]:hover::after {
+  opacity: 1;
+}
+
+.hint-slot:not(.hint-slot--active)[data-hp-tooltip]::after {
+  display: none;
+}
+
+#enc-trigger-btn {
+  position: relative;
+  display: inline-block;
+}
+
+#enc-trigger-btn:hover {
+  border-color: rgb(42, 51, 71) !important;
+}
+
+/* =============== UI Modifiers =============== */
+
+.hp-enc-disabled {
+  cursor: not-allowed !important;
+  user-select: none;
+  position: relative;
+}
+
+.hp-enc-disabled > svg,
+.hp-enc-disabled > span {
+  opacity: 0.35 !important;
+  filter: grayscale(1);
+  color: inherit !important;
+}
+
+#enc-trigger-btn[data-hp-tooltip]::after {
+  opacity: 0;
+  filter: none !important;
+}
+
+#enc-trigger-btn[data-hp-tooltip]:hover::after {
+  opacity: 1 !important;
+}
+
+.fx-options-item--active {
+  color: #e05555 !important;
+}
+
+.fx-options-item--active .fx-options-item-icon svg {
+  stroke: #e05555;
+}
+
+.fx-options-item--active .hp-mode-btn-label {
+  font-weight: 700;
+}
+
+.hp-hint-cost {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #e74c3c;
+}

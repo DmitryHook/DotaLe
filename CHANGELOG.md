@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8] - 2026-05-30
+
+### Added
+- **Competitive Mode** Introduced a new ranked format featuring unique mechanics, including health bars, game levels, and scoring system.
+
+### Fixed
+- **Encyclopedia Sorting** Sorting filters based on game metrics.
+
+### Changed
+- **Stats:** 
+  - **Attempt Counter** Removed the hero guess attempt counter.
+  - **Competitive Badge** Introduced a special icon for competitive games to replace the hero guess attempt counter.
+
 ## [0.7] - 2026-05-23
 
 ### Added

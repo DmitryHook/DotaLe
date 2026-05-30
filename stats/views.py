@@ -1,6 +1,5 @@
 from pathlib import Path
 import json
-
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -20,13 +19,16 @@ def _parse_game_file(path: Path) -> dict | None:
     except Exception:
         return None
 
-# =============== Stats views ===============
+# =============== Views ===============
 
 def stats(request):
     return render(request, 'stats/stats.html')
 
+# =============== API ===============
+
 @require_GET
 def stats_dates(request):
+    """Returns a list of available dates."""
     stats_dir = _stats_dir()
     if not stats_dir.exists():
         return JsonResponse({'dates': []})
@@ -39,6 +41,7 @@ def stats_dates(request):
 
 @require_GET
 def stats_games(request, date):
+    """Returns a list of games for a specific date."""
     date_dir = _stats_dir() / date
     if not date_dir.exists():
         return JsonResponse({'error': 'Date not found'}, status=404)
@@ -47,17 +50,31 @@ def stats_games(request, date):
         data = _parse_game_file(f)
         if data is None:
             continue
+
+        # For HP files (total_score is present), hero can be null on defeat.
+        # Get hero from the last winning level separator.
+        hero = data.get('hero')
+        if hero is None and data.get('total_score') is not None:
+            separators = [
+                g for g in data.get('guesses', [])
+                if g.get('__level_separator__') and g.get('result') == 'victory'
+            ]
+            if separators:
+                hero = separators[-1].get('hero')
+
         games.append({
             'filename': f.name,
             'time': f.stem.replace('-', ':'),
-            'hero': data.get('hero'),
+            'hero': hero,
             'result': data.get('result'),
             'attempts': data.get('attempts'),
+            'total_score': data.get('total_score'), # 'None' for standard games, a value for Challenge mode
         })
     return JsonResponse({'date': date, 'games': games})
 
 @require_GET
-def stats_game(request, date, filename):
+def stats_game_detail(request, date, filename):
+    """Returns game data for a specific date and filename."""
     if not filename.endswith('.json'):
         filename += '.json'
     game_file = _stats_dir() / date / filename
@@ -66,7 +83,10 @@ def stats_game(request, date, filename):
     data = _parse_game_file(game_file)
     if data is None:
         return JsonResponse({'error': 'File read error'}, status=500)
-    names = [g['name'] for g in data.get('guesses', []) if g.get('name')]
+
+    # Adds images to all characters and skips level separators
+    names = [g['name'] for g in data.get('guesses', [])
+                   if g.get('name') and not g.get('__level_separator__')]
     heroes_qs = Hero.objects.filter(name__in=names).only('name', 'image')
     image_map = {}
     for hero in heroes_qs:
@@ -75,5 +95,7 @@ def stats_game(request, date, filename):
         except Exception:
             image_map[hero.name] = None
     for guess in data.get('guesses', []):
-        guess['image'] = image_map.get(guess.get('name'))
+        if not guess.get('__level_separator__'):
+            guess['image'] = image_map.get(guess.get('name'))
+
     return JsonResponse(data)

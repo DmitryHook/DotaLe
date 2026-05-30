@@ -129,14 +129,36 @@
       });
     });
 
+    const CUSTOM_ORDERS = {
+      gender: ['Male', 'Female', 'Other'],
+      position: ['Carry', 'Midlane', 'Offlane', 'Support', 'Hard Support'],
+      attribute: ['Strength', 'Agility', 'Intelligence', 'Universal'],
+      attack_type: ['Melee', 'Ranged'],
+      complexity: ['Easy', 'Medium', 'Hard'],
+    }
+
     FILTER_KEYS.forEach(k => {
       const container = $(`enc-chips-${k}`);
       if (!container) { console.warn('[Enc] missing container:', k); return; }
+      
+      let values;
 
-      const values = k === 'date'
-        ? [...sets[k]].sort((a, b) => Number(a) - Number(b))
-        : [...sets[k]].sort();
-
+      if (CUSTOM_ORDERS[k]) {
+        const order = CUSTOM_ORDERS[k];
+        values = [...sets[k]].sort((a, b) => {
+          const indexA = order.indexOf(a);
+          const indexB = order.indexOf(b);
+          
+          if (indexA === -1) return 1;
+          if (indexB === -1) return -1;
+          
+          return indexA - indexB;
+        });
+      } else if (k === 'date') {
+        values = [...sets[k]].sort((a, b) => Number(a) - Number(b));
+      } else {
+        values = [...sets[k]].sort();
+      }
       container.innerHTML = '';
       values.forEach(v => container.appendChild(makeChip(v, v, k)));
     });

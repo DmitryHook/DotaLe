@@ -3,7 +3,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import patch, MagicMock, PropertyMock
 
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 from django.urls import reverse
 
 
@@ -222,7 +222,7 @@ class StatsGamesViewTests(TestCase):
 class StatsGameViewTests(TestCase):
 
     def _url(self, date="2024-03-15", filename="14-30-00.json"):
-        return reverse("stats:stats_game", kwargs={"date": date, "filename": filename})
+        return reverse("stats:stats_game_detail", kwargs={"date": date, "filename": filename})
 
     @patch("stats.views._stats_dir")
     def test_404_for_missing_file(self, mock_dir):
@@ -274,7 +274,7 @@ class StatsGameViewTests(TestCase):
 
             mock_dir.return_value = tmp_path
             # pass filename WITHOUT .json
-            url = reverse("stats:stats_game",
+            url = reverse("stats:stats_game_detail",
                           kwargs={"date": "2024-03-15", "filename": "14-30-00"})
             response = self.client.get(url)
 
@@ -363,7 +363,6 @@ class StatsUrlsTests(TestCase):
         self.assertEqual(url, "/stats/api/games/2024-03-15/")
 
     def test_game_url_resolves(self):
-        url = reverse("stats:stats_game",
+        url = reverse("stats:stats_game_detail",
                       kwargs={"date": "2024-03-15", "filename": "14-30-00.json"})
         self.assertEqual(url, "/stats/api/game/2024-03-15/14-30-00.json")
-        

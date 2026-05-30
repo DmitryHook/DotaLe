@@ -257,3 +257,120 @@ html, body {
 .guess-row-container {
   animation: none !important;
 }
+
+/* =============== HP Level Separator =============== */
+
+.hp-level-separator {
+  padding: 10px 0;
+  margin: 4px 0;
+}
+
+.hp-level-separator-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hp-level-separator-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-standard);
+  opacity: 0.5;
+}
+
+.hp-level-separator-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hp-level-separator--defeat .hp-level-separator-text {
+  color: #e74c3c;
+}
+
+/* =============== HP Level Total Score =============== */
+
+.hp-stats-total-score {
+  font-family: 'Playwrite GB S', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-accent-gold-light);
+}
+
+/* =============== HP Level Share Button Level Picker =============== */
+
+.hp-share-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-standard);
+  border-radius: var(--border-radius-standard);
+  padding: 8px;
+  min-width: 180px;
+}
+
+.hp-share-picker-btn {
+  width: 100%;
+  text-align: center;
+  font-size: 14px !important;
+  padding: 8px 14px !important;
+}
+
+/* =============== HP Level Share Button Level Picker — Dropdown =============== */
+
+.hp-share-picker {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--color-background-secondary, #1a1f2e);
+  border: 1px solid var(--color-border-standard, #2a3245);
+  border-radius: var(--border-radius-standard, 6px);
+  padding: 6px;
+  min-width: 160px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.hp-share-picker-btn {
+  width: 100%;
+  text-align: center;
+  padding: 8px 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--color-background-tertiary, #111520);
+  border: 1px solid var(--color-border-standard, #2a3245);
+  border-radius: var(--border-radius-standard, 6px);
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.hp-share-picker-btn:hover {
+  background: rgba(200,155,60,0.12);
+  border-color: var(--color-accent-gold, #c89b3c);
+  color: var(--color-accent-gold, #c89b3c);
+}
+
+/* Share button that triggers the picker */
+.hp-share-toggle-btn {
+  position: relative;
+}
+
+/* The victory-buttons parent must be relative for absolute positioning of the picker */
+#stats-banner .victory-buttons {
+  position: relative;
+}

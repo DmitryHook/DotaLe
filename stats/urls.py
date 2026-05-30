@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.stats, name='index'),
     path('api/dates/', views.stats_dates, name='stats_dates'),
     path('api/games/<str:date>/', views.stats_games, name='stats_games'),
-    path('api/game/<str:date>/<str:filename>', views.stats_game, name='stats_game'),
+    path('api/game/<str:date>/<str:filename>', views.stats_game_detail, name='stats_game_detail'),
 ]

@@ -90,6 +90,6 @@ Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 - [x] Track detailed statistics, including wins and attempts per game.
 - [x] "Share Result" functionality featuring an emoji grid (Wordle-style).
 - [x] A comprehensive encyclopedia of all heroes with advanced filtering by characteristics.
-- [ ] Implement a points-based scoring system and a definitive "Game Over" state.
+- [x] Implement a points-based scoring system and a definitive "Game Over" state.
 - [ ] Full multi-language support for English and Russian audiences.
 - [ ] Addition of a Light Theme for improved accessibility and preference.
