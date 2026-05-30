@@ -3,12 +3,10 @@ from game.models import Hero
 
 # =============== Game ===============
 
-TOTAL_HEROES = Hero.objects.count()
-
 def game_settings(request):
     return {
         "GAME_SETTINGS": {
-            "TOTAL_HEROES": TOTAL_HEROES,
+            "TOTAL_HEROES": Hero.objects.count(),
         }
     }
 
